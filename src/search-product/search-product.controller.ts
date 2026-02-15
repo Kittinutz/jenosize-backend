@@ -11,7 +11,7 @@ import {
   SearchProductDto,
   SearchProductResponseDto,
 } from './search-product.dto';
-import { PlatformEnum } from 'src/enum/platformEnum';
+import { PlatformEnum } from '../enum/platformEnum';
 
 @ApiTags('Search Product')
 @Controller('search-product')

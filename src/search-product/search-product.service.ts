@@ -6,7 +6,7 @@ puppeteer.use(StealthPlugin());
 import { Browser, Page } from 'puppeteer';
 import fs from 'fs';
 import userAgent from 'user-agents';
-import { PlatformEnum } from 'src/enum/platformEnum';
+import { PlatformEnum } from '../enum/platformEnum';
 @Injectable()
 export class SearchProductService {
   async searchProductLazada(url: string): Promise<SearchProductResponseDto> {

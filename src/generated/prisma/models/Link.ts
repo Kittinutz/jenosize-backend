@@ -187,14 +187,14 @@ export type LinkOrderByWithRelationInput = {
 
 export type LinkWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  url?: string
   AND?: Prisma.LinkWhereInput | Prisma.LinkWhereInput[]
   OR?: Prisma.LinkWhereInput[]
   NOT?: Prisma.LinkWhereInput | Prisma.LinkWhereInput[]
-  url?: Prisma.StringFilter<"Link"> | string
   createdAt?: Prisma.DateTimeFilter<"Link"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Link"> | Date | string
   CampaignProductsLinks?: Prisma.XOR<Prisma.CampaignProductsLinksNullableScalarRelationFilter, Prisma.CampaignProductsLinksWhereInput> | null
-}, "id">
+}, "id" | "url">
 
 export type LinkOrderByWithAggregationInput = {
   id?: Prisma.SortOrder

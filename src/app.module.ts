@@ -5,7 +5,8 @@ import { SearchProductModule } from './search-product/search-product.module';
 import { ProductModule } from './product/product.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
-import configuration from './config/configuration';
+import { CampaignModule } from './campaign/campaign.module';
+import configuration from '../config/configuration';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import configuration from './config/configuration';
     SearchProductModule,
     ProductModule,
     PrismaModule,
+    CampaignModule,
   ],
   controllers: [AppController],
   providers: [AppService],
