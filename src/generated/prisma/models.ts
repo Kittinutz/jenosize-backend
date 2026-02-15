@@ -9,8 +9,7 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/Product.js'
-export type * from './models/LazadaProduct.js'
-export type * from './models/ShopeeProduct.js'
+export type * from './models/MarketPlaceProduct.js'
 export type * from './models/Campaign.js'
 export type * from './models/CampaignsProducts.js'
 export type * from './models/Link.js'

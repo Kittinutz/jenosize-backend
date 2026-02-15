@@ -385,8 +385,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Product: 'Product',
-  LazadaProduct: 'LazadaProduct',
-  ShopeeProduct: 'ShopeeProduct',
+  MarketPlaceProduct: 'MarketPlaceProduct',
   Campaign: 'Campaign',
   CampaignsProducts: 'CampaignsProducts',
   Link: 'Link',
@@ -406,7 +405,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "product" | "lazadaProduct" | "shopeeProduct" | "campaign" | "campaignsProducts" | "link" | "campaignProductsLinks"
+    modelProps: "product" | "marketPlaceProduct" | "campaign" | "campaignsProducts" | "link" | "campaignProductsLinks"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -484,151 +483,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    LazadaProduct: {
-      payload: Prisma.$LazadaProductPayload<ExtArgs>
-      fields: Prisma.LazadaProductFieldRefs
+    MarketPlaceProduct: {
+      payload: Prisma.$MarketPlaceProductPayload<ExtArgs>
+      fields: Prisma.MarketPlaceProductFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.LazadaProductFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LazadaProductPayload> | null
+          args: Prisma.MarketPlaceProductFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketPlaceProductPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.LazadaProductFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LazadaProductPayload>
+          args: Prisma.MarketPlaceProductFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketPlaceProductPayload>
         }
         findFirst: {
-          args: Prisma.LazadaProductFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LazadaProductPayload> | null
+          args: Prisma.MarketPlaceProductFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketPlaceProductPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.LazadaProductFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LazadaProductPayload>
+          args: Prisma.MarketPlaceProductFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketPlaceProductPayload>
         }
         findMany: {
-          args: Prisma.LazadaProductFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LazadaProductPayload>[]
+          args: Prisma.MarketPlaceProductFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketPlaceProductPayload>[]
         }
         create: {
-          args: Prisma.LazadaProductCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LazadaProductPayload>
+          args: Prisma.MarketPlaceProductCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketPlaceProductPayload>
         }
         createMany: {
-          args: Prisma.LazadaProductCreateManyArgs<ExtArgs>
+          args: Prisma.MarketPlaceProductCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.LazadaProductCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LazadaProductPayload>[]
+          args: Prisma.MarketPlaceProductCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketPlaceProductPayload>[]
         }
         delete: {
-          args: Prisma.LazadaProductDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LazadaProductPayload>
+          args: Prisma.MarketPlaceProductDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketPlaceProductPayload>
         }
         update: {
-          args: Prisma.LazadaProductUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LazadaProductPayload>
+          args: Prisma.MarketPlaceProductUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketPlaceProductPayload>
         }
         deleteMany: {
-          args: Prisma.LazadaProductDeleteManyArgs<ExtArgs>
+          args: Prisma.MarketPlaceProductDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.LazadaProductUpdateManyArgs<ExtArgs>
+          args: Prisma.MarketPlaceProductUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.LazadaProductUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LazadaProductPayload>[]
+          args: Prisma.MarketPlaceProductUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketPlaceProductPayload>[]
         }
         upsert: {
-          args: Prisma.LazadaProductUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LazadaProductPayload>
+          args: Prisma.MarketPlaceProductUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MarketPlaceProductPayload>
         }
         aggregate: {
-          args: Prisma.LazadaProductAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateLazadaProduct>
+          args: Prisma.MarketPlaceProductAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMarketPlaceProduct>
         }
         groupBy: {
-          args: Prisma.LazadaProductGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.LazadaProductGroupByOutputType>[]
+          args: Prisma.MarketPlaceProductGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MarketPlaceProductGroupByOutputType>[]
         }
         count: {
-          args: Prisma.LazadaProductCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.LazadaProductCountAggregateOutputType> | number
-        }
-      }
-    }
-    ShopeeProduct: {
-      payload: Prisma.$ShopeeProductPayload<ExtArgs>
-      fields: Prisma.ShopeeProductFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.ShopeeProductFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShopeeProductPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.ShopeeProductFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShopeeProductPayload>
-        }
-        findFirst: {
-          args: Prisma.ShopeeProductFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShopeeProductPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.ShopeeProductFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShopeeProductPayload>
-        }
-        findMany: {
-          args: Prisma.ShopeeProductFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShopeeProductPayload>[]
-        }
-        create: {
-          args: Prisma.ShopeeProductCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShopeeProductPayload>
-        }
-        createMany: {
-          args: Prisma.ShopeeProductCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.ShopeeProductCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShopeeProductPayload>[]
-        }
-        delete: {
-          args: Prisma.ShopeeProductDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShopeeProductPayload>
-        }
-        update: {
-          args: Prisma.ShopeeProductUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShopeeProductPayload>
-        }
-        deleteMany: {
-          args: Prisma.ShopeeProductDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.ShopeeProductUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.ShopeeProductUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShopeeProductPayload>[]
-        }
-        upsert: {
-          args: Prisma.ShopeeProductUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ShopeeProductPayload>
-        }
-        aggregate: {
-          args: Prisma.ShopeeProductAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateShopeeProduct>
-        }
-        groupBy: {
-          args: Prisma.ShopeeProductGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ShopeeProductGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.ShopeeProductCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ShopeeProductCountAggregateOutputType> | number
+          args: Prisma.MarketPlaceProductCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MarketPlaceProductCountAggregateOutputType> | number
         }
       }
     }
@@ -979,32 +904,19 @@ export const ProductScalarFieldEnum = {
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
 
 
-export const LazadaProductScalarFieldEnum = {
+export const MarketPlaceProductScalarFieldEnum = {
   id: 'id',
   title: 'title',
   image_url: 'image_url',
   price: 'price',
   url: 'url',
+  platform: 'platform',
   productId: 'productId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type LazadaProductScalarFieldEnum = (typeof LazadaProductScalarFieldEnum)[keyof typeof LazadaProductScalarFieldEnum]
-
-
-export const ShopeeProductScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  image_url: 'image_url',
-  price: 'price',
-  url: 'url',
-  productId: 'productId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type ShopeeProductScalarFieldEnum = (typeof ShopeeProductScalarFieldEnum)[keyof typeof ShopeeProductScalarFieldEnum]
+export type MarketPlaceProductScalarFieldEnum = (typeof MarketPlaceProductScalarFieldEnum)[keyof typeof MarketPlaceProductScalarFieldEnum]
 
 
 export const CampaignScalarFieldEnum = {
@@ -1127,6 +1039,20 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
+ * Reference to a field of type 'PlatformEnum'
+ */
+export type EnumPlatformEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PlatformEnum'>
+    
+
+
+/**
+ * Reference to a field of type 'PlatformEnum[]'
+ */
+export type ListEnumPlatformEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PlatformEnum[]'>
+    
+
+
+/**
  * Reference to a field of type 'Int'
  */
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -1235,8 +1161,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   product?: Prisma.ProductOmit
-  lazadaProduct?: Prisma.LazadaProductOmit
-  shopeeProduct?: Prisma.ShopeeProductOmit
+  marketPlaceProduct?: Prisma.MarketPlaceProductOmit
   campaign?: Prisma.CampaignOmit
   campaignsProducts?: Prisma.CampaignsProductsOmit
   link?: Prisma.LinkOmit

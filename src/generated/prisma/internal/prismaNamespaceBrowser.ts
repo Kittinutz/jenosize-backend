@@ -52,8 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Product: 'Product',
-  LazadaProduct: 'LazadaProduct',
-  ShopeeProduct: 'ShopeeProduct',
+  MarketPlaceProduct: 'MarketPlaceProduct',
   Campaign: 'Campaign',
   CampaignsProducts: 'CampaignsProducts',
   Link: 'Link',
@@ -88,32 +87,19 @@ export const ProductScalarFieldEnum = {
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
 
 
-export const LazadaProductScalarFieldEnum = {
+export const MarketPlaceProductScalarFieldEnum = {
   id: 'id',
   title: 'title',
   image_url: 'image_url',
   price: 'price',
   url: 'url',
+  platform: 'platform',
   productId: 'productId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type LazadaProductScalarFieldEnum = (typeof LazadaProductScalarFieldEnum)[keyof typeof LazadaProductScalarFieldEnum]
-
-
-export const ShopeeProductScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  image_url: 'image_url',
-  price: 'price',
-  url: 'url',
-  productId: 'productId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type ShopeeProductScalarFieldEnum = (typeof ShopeeProductScalarFieldEnum)[keyof typeof ShopeeProductScalarFieldEnum]
+export type MarketPlaceProductScalarFieldEnum = (typeof MarketPlaceProductScalarFieldEnum)[keyof typeof MarketPlaceProductScalarFieldEnum]
 
 
 export const CampaignScalarFieldEnum = {

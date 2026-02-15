@@ -43,15 +43,10 @@ export { Prisma }
  */
 export type Product = Prisma.ProductModel
 /**
- * Model LazadaProduct
+ * Model MarketPlaceProduct
  * 
  */
-export type LazadaProduct = Prisma.LazadaProductModel
-/**
- * Model ShopeeProduct
- * 
- */
-export type ShopeeProduct = Prisma.ShopeeProductModel
+export type MarketPlaceProduct = Prisma.MarketPlaceProductModel
 /**
  * Model Campaign
  * 

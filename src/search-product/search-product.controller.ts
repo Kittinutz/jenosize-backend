@@ -11,6 +11,7 @@ import {
   SearchProductDto,
   SearchProductResponseDto,
 } from './search-product.dto';
+import { PlatformEnum } from 'src/enum/platformEnum';
 
 @ApiTags('Search Product')
 @Controller('search-product')
@@ -49,10 +50,12 @@ export class SearchProductController {
     }
     console.log(`Detected platform: ${platform}`);
     const mappingexecuttion: {
-      [key: string]: () => Promise<SearchProductResponseDto>;
+      [key in PlatformEnum]: () => Promise<SearchProductResponseDto>;
     } = {
-      lazada: () => this.searchProductService.searchProductLazada(url),
-      shopee: () => this.searchProductService.searchProductShopee(url),
+      [PlatformEnum.LAZADA]: () =>
+        this.searchProductService.searchProductLazada(url),
+      [PlatformEnum.SHOPEE]: () =>
+        this.searchProductService.searchProductShopee(url),
     };
 
     return await mappingexecuttion[platform]();

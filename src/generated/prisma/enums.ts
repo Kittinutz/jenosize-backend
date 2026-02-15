@@ -9,7 +9,9 @@
 * 🟢 You can import this file directly.
 */
 
+export const PlatformEnum = {
+  LAZADA: 'LAZADA',
+  SHOPEE: 'SHOPEE'
+} as const
 
-
-// This file is empty because there are no enums in the schema.
-export {}
+export type PlatformEnum = (typeof PlatformEnum)[keyof typeof PlatformEnum]

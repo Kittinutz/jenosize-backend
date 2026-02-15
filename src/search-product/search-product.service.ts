@@ -6,6 +6,7 @@ puppeteer.use(StealthPlugin());
 import { Browser, Page } from 'puppeteer';
 import fs from 'fs';
 import userAgent from 'user-agents';
+import { PlatformEnum } from 'src/enum/platformEnum';
 @Injectable()
 export class SearchProductService {
   async searchProductLazada(url: string): Promise<SearchProductResponseDto> {
@@ -13,6 +14,7 @@ export class SearchProductService {
       headless: true, // Use 'false' if you want to see the browser
       args: [
         '--no-sandbox',
+        '--incognito',
         '--disable-setuid-sandbox',
         '--window-size=1920,1080',
       ],
@@ -137,9 +139,10 @@ export class SearchProductService {
 
     try {
       browser = await puppeteer.launch({
-        headless: false, // Use 'false' if you want to see the browser
+        headless: true, // Use 'false' if you want to see the browser
         args: [
           '--no-sandbox',
+          '--incognito',
           '--disable-setuid-sandbox',
           '--window-size=1920,1080',
           //   '--disable-web-security',
@@ -270,24 +273,24 @@ export class SearchProductService {
       }
     }
   }
-  detectPlatform(url: string): string {
+  detectPlatform(url: string): PlatformEnum {
     if (url.includes('lazada')) {
-      return 'lazada';
+      return PlatformEnum.LAZADA;
     } else if (url.includes('shopee')) {
-      return 'shopee';
+      return PlatformEnum.SHOPEE;
     }
     throw new BadRequestException('Unsupported platform');
   }
 
-  extractProductId(url: string, platform: string): string {
+  extractProductId(url: string, platform: PlatformEnum): string {
     try {
-      if (platform === 'lazada') {
+      if (platform === PlatformEnum.LAZADA) {
         // Lazada URL pattern: https://www.lazada.co.th/products/product-name-i123456789.html
         const match = url.match(/-i(\d+)\.html/);
         if (match && match[1]) {
           return match[1];
         }
-      } else if (platform === 'shopee') {
+      } else if (platform === PlatformEnum.SHOPEE) {
         // Shopee URL pattern: https://shopee.co.th/product-name-i.123.456789
         const match = url.match(/\.i\.(\d+)\.(\d+)/);
         if (match && match[2]) {

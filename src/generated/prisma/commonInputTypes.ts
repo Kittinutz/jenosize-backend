@@ -99,6 +99,13 @@ export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
 }
 
+export type EnumPlatformEnumFilter<$PrismaModel = never> = {
+  equals?: $Enums.PlatformEnum | Prisma.EnumPlatformEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.PlatformEnum[] | Prisma.ListEnumPlatformEnumFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PlatformEnum[] | Prisma.ListEnumPlatformEnumFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPlatformEnumFilter<$PrismaModel> | $Enums.PlatformEnum
+}
+
 export type StringNullableFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
@@ -117,6 +124,16 @@ export type StringNullableFilter<$PrismaModel = never> = {
 export type SortOrderInput = {
   sort: Prisma.SortOrder
   nulls?: Prisma.NullsOrder
+}
+
+export type EnumPlatformEnumWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PlatformEnum | Prisma.EnumPlatformEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.PlatformEnum[] | Prisma.ListEnumPlatformEnumFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PlatformEnum[] | Prisma.ListEnumPlatformEnumFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPlatformEnumWithAggregatesFilter<$PrismaModel> | $Enums.PlatformEnum
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPlatformEnumFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPlatformEnumFilter<$PrismaModel>
 }
 
 export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -231,6 +248,13 @@ export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
 }
 
+export type NestedEnumPlatformEnumFilter<$PrismaModel = never> = {
+  equals?: $Enums.PlatformEnum | Prisma.EnumPlatformEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.PlatformEnum[] | Prisma.ListEnumPlatformEnumFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PlatformEnum[] | Prisma.ListEnumPlatformEnumFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPlatformEnumFilter<$PrismaModel> | $Enums.PlatformEnum
+}
+
 export type NestedStringNullableFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
@@ -243,6 +267,16 @@ export type NestedStringNullableFilter<$PrismaModel = never> = {
   startsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
   endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
   not?: Prisma.NestedStringNullableFilter<$PrismaModel> | string | null
+}
+
+export type NestedEnumPlatformEnumWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PlatformEnum | Prisma.EnumPlatformEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.PlatformEnum[] | Prisma.ListEnumPlatformEnumFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PlatformEnum[] | Prisma.ListEnumPlatformEnumFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPlatformEnumWithAggregatesFilter<$PrismaModel> | $Enums.PlatformEnum
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPlatformEnumFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPlatformEnumFilter<$PrismaModel>
 }
 
 export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
