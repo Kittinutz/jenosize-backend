@@ -39,20 +39,22 @@ export class SearchProductController {
     status: 400,
     description: 'Invalid URL or validation error',
   })
-  searchProduct(
+  async searchProduct(
     @Query(new ValidationPipe({ transform: true })) query: SearchProductDto,
-  ): SearchProductResponseDto {
+  ): Promise<SearchProductResponseDto> {
     const url = query.url;
     const platform = this.searchProductService.detectPlatform(url);
     if (!platform) {
       throw new BadRequestException('Unsupported platform');
     }
-    const mappingexecuttion: { [key: string]: () => SearchProductResponseDto } =
-      {
-        lazada: () => this.searchProductService.searchProduct(url),
-        shopee: () => this.searchProductService.searchProductShopee(url),
-      };
+    console.log(`Detected platform: ${platform}`);
+    const mappingexecuttion: {
+      [key: string]: () => Promise<SearchProductResponseDto>;
+    } = {
+      lazada: () => this.searchProductService.searchProductLazada(url),
+      shopee: () => this.searchProductService.searchProductShopee(url),
+    };
 
-    return mappingexecuttion[platform]();
+    return await mappingexecuttion[platform]();
   }
 }
