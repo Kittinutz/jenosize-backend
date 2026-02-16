@@ -12,9 +12,7 @@ export class GoService {
         campaign: true,
       },
     });
-    console.log({
-      link,
-    });
+
     if (!link || !link.campaign || !link.marketPlaceProduct) {
       throw new NotFoundException('Link not found');
     } else {

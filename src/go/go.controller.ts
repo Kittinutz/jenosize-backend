@@ -8,7 +8,6 @@ export class GoController {
 
   @Get(':id')
   async findOne(@Param('id') id: string, @Res() res: Response<void>) {
-    console.log(id + ' is the id');
     const url = await this.goService.findOne(id);
 
     return res.redirect(url);
