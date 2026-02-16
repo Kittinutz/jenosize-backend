@@ -214,7 +214,8 @@ export type CampaignWhereInput = {
   UTMSource?: Prisma.StringFilter<"Campaign"> | string
   UTMMedium?: Prisma.StringFilter<"Campaign"> | string
   UTMCampaign?: Prisma.StringFilter<"Campaign"> | string
-  CampaignsProducts?: Prisma.CampaignsProductsListRelationFilter
+  campaignsProducts?: Prisma.CampaignsProductsListRelationFilter
+  links?: Prisma.LinkListRelationFilter
 }
 
 export type CampaignOrderByWithRelationInput = {
@@ -227,7 +228,8 @@ export type CampaignOrderByWithRelationInput = {
   UTMSource?: Prisma.SortOrder
   UTMMedium?: Prisma.SortOrder
   UTMCampaign?: Prisma.SortOrder
-  CampaignsProducts?: Prisma.CampaignsProductsOrderByRelationAggregateInput
+  campaignsProducts?: Prisma.CampaignsProductsOrderByRelationAggregateInput
+  links?: Prisma.LinkOrderByRelationAggregateInput
 }
 
 export type CampaignWhereUniqueInput = Prisma.AtLeast<{
@@ -243,7 +245,8 @@ export type CampaignWhereUniqueInput = Prisma.AtLeast<{
   UTMSource?: Prisma.StringFilter<"Campaign"> | string
   UTMMedium?: Prisma.StringFilter<"Campaign"> | string
   UTMCampaign?: Prisma.StringFilter<"Campaign"> | string
-  CampaignsProducts?: Prisma.CampaignsProductsListRelationFilter
+  campaignsProducts?: Prisma.CampaignsProductsListRelationFilter
+  links?: Prisma.LinkListRelationFilter
 }, "id">
 
 export type CampaignOrderByWithAggregationInput = {
@@ -286,7 +289,8 @@ export type CampaignCreateInput = {
   UTMSource: string
   UTMMedium: string
   UTMCampaign: string
-  CampaignsProducts?: Prisma.CampaignsProductsCreateNestedManyWithoutCampaignInput
+  campaignsProducts?: Prisma.CampaignsProductsCreateNestedManyWithoutCampaignInput
+  links?: Prisma.LinkCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateInput = {
@@ -299,7 +303,8 @@ export type CampaignUncheckedCreateInput = {
   UTMSource: string
   UTMMedium: string
   UTMCampaign: string
-  CampaignsProducts?: Prisma.CampaignsProductsUncheckedCreateNestedManyWithoutCampaignInput
+  campaignsProducts?: Prisma.CampaignsProductsUncheckedCreateNestedManyWithoutCampaignInput
+  links?: Prisma.LinkUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUpdateInput = {
@@ -312,7 +317,8 @@ export type CampaignUpdateInput = {
   UTMSource?: Prisma.StringFieldUpdateOperationsInput | string
   UTMMedium?: Prisma.StringFieldUpdateOperationsInput | string
   UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
-  CampaignsProducts?: Prisma.CampaignsProductsUpdateManyWithoutCampaignNestedInput
+  campaignsProducts?: Prisma.CampaignsProductsUpdateManyWithoutCampaignNestedInput
+  links?: Prisma.LinkUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateInput = {
@@ -325,7 +331,8 @@ export type CampaignUncheckedUpdateInput = {
   UTMSource?: Prisma.StringFieldUpdateOperationsInput | string
   UTMMedium?: Prisma.StringFieldUpdateOperationsInput | string
   UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
-  CampaignsProducts?: Prisma.CampaignsProductsUncheckedUpdateManyWithoutCampaignNestedInput
+  campaignsProducts?: Prisma.CampaignsProductsUncheckedUpdateManyWithoutCampaignNestedInput
+  links?: Prisma.LinkUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignCreateManyInput = {
@@ -419,6 +426,20 @@ export type CampaignUpdateOneRequiredWithoutCampaignsProductsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CampaignUpdateToOneWithWhereWithoutCampaignsProductsInput, Prisma.CampaignUpdateWithoutCampaignsProductsInput>, Prisma.CampaignUncheckedUpdateWithoutCampaignsProductsInput>
 }
 
+export type CampaignCreateNestedOneWithoutLinksInput = {
+  create?: Prisma.XOR<Prisma.CampaignCreateWithoutLinksInput, Prisma.CampaignUncheckedCreateWithoutLinksInput>
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutLinksInput
+  connect?: Prisma.CampaignWhereUniqueInput
+}
+
+export type CampaignUpdateOneRequiredWithoutLinksNestedInput = {
+  create?: Prisma.XOR<Prisma.CampaignCreateWithoutLinksInput, Prisma.CampaignUncheckedCreateWithoutLinksInput>
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutLinksInput
+  upsert?: Prisma.CampaignUpsertWithoutLinksInput
+  connect?: Prisma.CampaignWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CampaignUpdateToOneWithWhereWithoutLinksInput, Prisma.CampaignUpdateWithoutLinksInput>, Prisma.CampaignUncheckedUpdateWithoutLinksInput>
+}
+
 export type CampaignCreateWithoutCampaignsProductsInput = {
   id?: string
   name: string
@@ -429,6 +450,7 @@ export type CampaignCreateWithoutCampaignsProductsInput = {
   UTMSource: string
   UTMMedium: string
   UTMCampaign: string
+  links?: Prisma.LinkCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateWithoutCampaignsProductsInput = {
@@ -441,6 +463,7 @@ export type CampaignUncheckedCreateWithoutCampaignsProductsInput = {
   UTMSource: string
   UTMMedium: string
   UTMCampaign: string
+  links?: Prisma.LinkUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignCreateOrConnectWithoutCampaignsProductsInput = {
@@ -469,6 +492,7 @@ export type CampaignUpdateWithoutCampaignsProductsInput = {
   UTMSource?: Prisma.StringFieldUpdateOperationsInput | string
   UTMMedium?: Prisma.StringFieldUpdateOperationsInput | string
   UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
+  links?: Prisma.LinkUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateWithoutCampaignsProductsInput = {
@@ -481,6 +505,75 @@ export type CampaignUncheckedUpdateWithoutCampaignsProductsInput = {
   UTMSource?: Prisma.StringFieldUpdateOperationsInput | string
   UTMMedium?: Prisma.StringFieldUpdateOperationsInput | string
   UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
+  links?: Prisma.LinkUncheckedUpdateManyWithoutCampaignNestedInput
+}
+
+export type CampaignCreateWithoutLinksInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  startDate: Date | string
+  endDate: Date | string
+  UTMSource: string
+  UTMMedium: string
+  UTMCampaign: string
+  campaignsProducts?: Prisma.CampaignsProductsCreateNestedManyWithoutCampaignInput
+}
+
+export type CampaignUncheckedCreateWithoutLinksInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  startDate: Date | string
+  endDate: Date | string
+  UTMSource: string
+  UTMMedium: string
+  UTMCampaign: string
+  campaignsProducts?: Prisma.CampaignsProductsUncheckedCreateNestedManyWithoutCampaignInput
+}
+
+export type CampaignCreateOrConnectWithoutLinksInput = {
+  where: Prisma.CampaignWhereUniqueInput
+  create: Prisma.XOR<Prisma.CampaignCreateWithoutLinksInput, Prisma.CampaignUncheckedCreateWithoutLinksInput>
+}
+
+export type CampaignUpsertWithoutLinksInput = {
+  update: Prisma.XOR<Prisma.CampaignUpdateWithoutLinksInput, Prisma.CampaignUncheckedUpdateWithoutLinksInput>
+  create: Prisma.XOR<Prisma.CampaignCreateWithoutLinksInput, Prisma.CampaignUncheckedCreateWithoutLinksInput>
+  where?: Prisma.CampaignWhereInput
+}
+
+export type CampaignUpdateToOneWithWhereWithoutLinksInput = {
+  where?: Prisma.CampaignWhereInput
+  data: Prisma.XOR<Prisma.CampaignUpdateWithoutLinksInput, Prisma.CampaignUncheckedUpdateWithoutLinksInput>
+}
+
+export type CampaignUpdateWithoutLinksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  UTMSource?: Prisma.StringFieldUpdateOperationsInput | string
+  UTMMedium?: Prisma.StringFieldUpdateOperationsInput | string
+  UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
+  campaignsProducts?: Prisma.CampaignsProductsUpdateManyWithoutCampaignNestedInput
+}
+
+export type CampaignUncheckedUpdateWithoutLinksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  UTMSource?: Prisma.StringFieldUpdateOperationsInput | string
+  UTMMedium?: Prisma.StringFieldUpdateOperationsInput | string
+  UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
+  campaignsProducts?: Prisma.CampaignsProductsUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 
@@ -489,11 +582,13 @@ export type CampaignUncheckedUpdateWithoutCampaignsProductsInput = {
  */
 
 export type CampaignCountOutputType = {
-  CampaignsProducts: number
+  campaignsProducts: number
+  links: number
 }
 
 export type CampaignCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  CampaignsProducts?: boolean | CampaignCountOutputTypeCountCampaignsProductsArgs
+  campaignsProducts?: boolean | CampaignCountOutputTypeCountCampaignsProductsArgs
+  links?: boolean | CampaignCountOutputTypeCountLinksArgs
 }
 
 /**
@@ -513,6 +608,13 @@ export type CampaignCountOutputTypeCountCampaignsProductsArgs<ExtArgs extends ru
   where?: Prisma.CampaignsProductsWhereInput
 }
 
+/**
+ * CampaignCountOutputType without action
+ */
+export type CampaignCountOutputTypeCountLinksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LinkWhereInput
+}
+
 
 export type CampaignSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -524,7 +626,8 @@ export type CampaignSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   UTMSource?: boolean
   UTMMedium?: boolean
   UTMCampaign?: boolean
-  CampaignsProducts?: boolean | Prisma.Campaign$CampaignsProductsArgs<ExtArgs>
+  campaignsProducts?: boolean | Prisma.Campaign$campaignsProductsArgs<ExtArgs>
+  links?: boolean | Prisma.Campaign$linksArgs<ExtArgs>
   _count?: boolean | Prisma.CampaignCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["campaign"]>
 
@@ -566,7 +669,8 @@ export type CampaignSelectScalar = {
 
 export type CampaignOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt" | "startDate" | "endDate" | "UTMSource" | "UTMMedium" | "UTMCampaign", ExtArgs["result"]["campaign"]>
 export type CampaignInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  CampaignsProducts?: boolean | Prisma.Campaign$CampaignsProductsArgs<ExtArgs>
+  campaignsProducts?: boolean | Prisma.Campaign$campaignsProductsArgs<ExtArgs>
+  links?: boolean | Prisma.Campaign$linksArgs<ExtArgs>
   _count?: boolean | Prisma.CampaignCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CampaignIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -575,7 +679,8 @@ export type CampaignIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type $CampaignPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Campaign"
   objects: {
-    CampaignsProducts: Prisma.$CampaignsProductsPayload<ExtArgs>[]
+    campaignsProducts: Prisma.$CampaignsProductsPayload<ExtArgs>[]
+    links: Prisma.$LinkPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -981,7 +1086,8 @@ readonly fields: CampaignFieldRefs;
  */
 export interface Prisma__CampaignClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  CampaignsProducts<T extends Prisma.Campaign$CampaignsProductsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$CampaignsProductsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CampaignsProductsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  campaignsProducts<T extends Prisma.Campaign$campaignsProductsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$campaignsProductsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CampaignsProductsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  links<T extends Prisma.Campaign$linksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$linksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1408,9 +1514,9 @@ export type CampaignDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Campaign.CampaignsProducts
+ * Campaign.campaignsProducts
  */
-export type Campaign$CampaignsProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Campaign$campaignsProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the CampaignsProducts
    */
@@ -1429,6 +1535,30 @@ export type Campaign$CampaignsProductsArgs<ExtArgs extends runtime.Types.Extensi
   take?: number
   skip?: number
   distinct?: Prisma.CampaignsProductsScalarFieldEnum | Prisma.CampaignsProductsScalarFieldEnum[]
+}
+
+/**
+ * Campaign.links
+ */
+export type Campaign$linksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Link
+   */
+  select?: Prisma.LinkSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Link
+   */
+  omit?: Prisma.LinkOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LinkInclude<ExtArgs> | null
+  where?: Prisma.LinkWhereInput
+  orderBy?: Prisma.LinkOrderByWithRelationInput | Prisma.LinkOrderByWithRelationInput[]
+  cursor?: Prisma.LinkWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LinkScalarFieldEnum | Prisma.LinkScalarFieldEnum[]
 }
 
 /**

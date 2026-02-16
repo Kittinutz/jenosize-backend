@@ -55,8 +55,7 @@ export const ModelName = {
   MarketPlaceProduct: 'MarketPlaceProduct',
   Campaign: 'Campaign',
   CampaignsProducts: 'CampaignsProducts',
-  Link: 'Link',
-  CampaignProductsLinks: 'CampaignProductsLinks'
+  Link: 'Link'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -130,23 +129,15 @@ export type CampaignsProductsScalarFieldEnum = (typeof CampaignsProductsScalarFi
 
 export const LinkScalarFieldEnum = {
   id: 'id',
+  urlId: 'urlId',
   url: 'url',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  campaignId: 'campaignId',
+  marketPlaceProductId: 'marketPlaceProductId'
 } as const
 
 export type LinkScalarFieldEnum = (typeof LinkScalarFieldEnum)[keyof typeof LinkScalarFieldEnum]
-
-
-export const CampaignProductsLinksScalarFieldEnum = {
-  id: 'id',
-  campaignProductsId: 'campaignProductsId',
-  linkId: 'linkId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type CampaignProductsLinksScalarFieldEnum = (typeof CampaignProductsLinksScalarFieldEnum)[keyof typeof CampaignProductsLinksScalarFieldEnum]
 
 
 export const SortOrder = {

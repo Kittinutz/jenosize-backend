@@ -26,46 +26,64 @@ export type AggregateLink = {
 
 export type LinkMinAggregateOutputType = {
   id: string | null
+  urlId: string | null
   url: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  campaignId: string | null
+  marketPlaceProductId: string | null
 }
 
 export type LinkMaxAggregateOutputType = {
   id: string | null
+  urlId: string | null
   url: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  campaignId: string | null
+  marketPlaceProductId: string | null
 }
 
 export type LinkCountAggregateOutputType = {
   id: number
+  urlId: number
   url: number
   createdAt: number
   updatedAt: number
+  campaignId: number
+  marketPlaceProductId: number
   _all: number
 }
 
 
 export type LinkMinAggregateInputType = {
   id?: true
+  urlId?: true
   url?: true
   createdAt?: true
   updatedAt?: true
+  campaignId?: true
+  marketPlaceProductId?: true
 }
 
 export type LinkMaxAggregateInputType = {
   id?: true
+  urlId?: true
   url?: true
   createdAt?: true
   updatedAt?: true
+  campaignId?: true
+  marketPlaceProductId?: true
 }
 
 export type LinkCountAggregateInputType = {
   id?: true
+  urlId?: true
   url?: true
   createdAt?: true
   updatedAt?: true
+  campaignId?: true
+  marketPlaceProductId?: true
   _all?: true
 }
 
@@ -143,9 +161,12 @@ export type LinkGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type LinkGroupByOutputType = {
   id: string
+  urlId: string
   url: string
   createdAt: Date
   updatedAt: Date
+  campaignId: string
+  marketPlaceProductId: string
   _count: LinkCountAggregateOutputType | null
   _min: LinkMinAggregateOutputType | null
   _max: LinkMaxAggregateOutputType | null
@@ -171,36 +192,51 @@ export type LinkWhereInput = {
   OR?: Prisma.LinkWhereInput[]
   NOT?: Prisma.LinkWhereInput | Prisma.LinkWhereInput[]
   id?: Prisma.StringFilter<"Link"> | string
+  urlId?: Prisma.StringFilter<"Link"> | string
   url?: Prisma.StringFilter<"Link"> | string
   createdAt?: Prisma.DateTimeFilter<"Link"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Link"> | Date | string
-  CampaignProductsLinks?: Prisma.XOR<Prisma.CampaignProductsLinksNullableScalarRelationFilter, Prisma.CampaignProductsLinksWhereInput> | null
+  campaignId?: Prisma.StringFilter<"Link"> | string
+  marketPlaceProductId?: Prisma.StringFilter<"Link"> | string
+  campaign?: Prisma.XOR<Prisma.CampaignScalarRelationFilter, Prisma.CampaignWhereInput>
+  marketPlaceProduct?: Prisma.XOR<Prisma.MarketPlaceProductNullableScalarRelationFilter, Prisma.MarketPlaceProductWhereInput> | null
 }
 
 export type LinkOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  urlId?: Prisma.SortOrder
   url?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksOrderByWithRelationInput
+  campaignId?: Prisma.SortOrder
+  marketPlaceProductId?: Prisma.SortOrder
+  campaign?: Prisma.CampaignOrderByWithRelationInput
+  marketPlaceProduct?: Prisma.MarketPlaceProductOrderByWithRelationInput
 }
 
 export type LinkWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  urlId?: string
   url?: string
   AND?: Prisma.LinkWhereInput | Prisma.LinkWhereInput[]
   OR?: Prisma.LinkWhereInput[]
   NOT?: Prisma.LinkWhereInput | Prisma.LinkWhereInput[]
   createdAt?: Prisma.DateTimeFilter<"Link"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Link"> | Date | string
-  CampaignProductsLinks?: Prisma.XOR<Prisma.CampaignProductsLinksNullableScalarRelationFilter, Prisma.CampaignProductsLinksWhereInput> | null
-}, "id" | "url">
+  campaignId?: Prisma.StringFilter<"Link"> | string
+  marketPlaceProductId?: Prisma.StringFilter<"Link"> | string
+  campaign?: Prisma.XOR<Prisma.CampaignScalarRelationFilter, Prisma.CampaignWhereInput>
+  marketPlaceProduct?: Prisma.XOR<Prisma.MarketPlaceProductNullableScalarRelationFilter, Prisma.MarketPlaceProductWhereInput> | null
+}, "id" | "urlId" | "url">
 
 export type LinkOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  urlId?: Prisma.SortOrder
   url?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  campaignId?: Prisma.SortOrder
+  marketPlaceProductId?: Prisma.SortOrder
   _count?: Prisma.LinkCountOrderByAggregateInput
   _max?: Prisma.LinkMaxOrderByAggregateInput
   _min?: Prisma.LinkMinOrderByAggregateInput
@@ -211,52 +247,67 @@ export type LinkScalarWhereWithAggregatesInput = {
   OR?: Prisma.LinkScalarWhereWithAggregatesInput[]
   NOT?: Prisma.LinkScalarWhereWithAggregatesInput | Prisma.LinkScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Link"> | string
+  urlId?: Prisma.StringWithAggregatesFilter<"Link"> | string
   url?: Prisma.StringWithAggregatesFilter<"Link"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Link"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Link"> | Date | string
+  campaignId?: Prisma.StringWithAggregatesFilter<"Link"> | string
+  marketPlaceProductId?: Prisma.StringWithAggregatesFilter<"Link"> | string
 }
 
 export type LinkCreateInput = {
   id?: string
+  urlId: string
   url: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksCreateNestedOneWithoutLinkInput
+  campaign: Prisma.CampaignCreateNestedOneWithoutLinksInput
+  marketPlaceProduct?: Prisma.MarketPlaceProductCreateNestedOneWithoutLinksInput
 }
 
 export type LinkUncheckedCreateInput = {
   id?: string
+  urlId: string
   url: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksUncheckedCreateNestedOneWithoutLinkInput
+  campaignId: string
+  marketPlaceProductId: string
 }
 
 export type LinkUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  urlId?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksUpdateOneWithoutLinkNestedInput
+  campaign?: Prisma.CampaignUpdateOneRequiredWithoutLinksNestedInput
+  marketPlaceProduct?: Prisma.MarketPlaceProductUpdateOneWithoutLinksNestedInput
 }
 
 export type LinkUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  urlId?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksUncheckedUpdateOneWithoutLinkNestedInput
+  campaignId?: Prisma.StringFieldUpdateOperationsInput | string
+  marketPlaceProductId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type LinkCreateManyInput = {
   id?: string
+  urlId: string
   url: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  campaignId: string
+  marketPlaceProductId: string
 }
 
 export type LinkUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  urlId?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -264,143 +315,387 @@ export type LinkUpdateManyMutationInput = {
 
 export type LinkUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  urlId?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  campaignId?: Prisma.StringFieldUpdateOperationsInput | string
+  marketPlaceProductId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type LinkListRelationFilter = {
+  every?: Prisma.LinkWhereInput
+  some?: Prisma.LinkWhereInput
+  none?: Prisma.LinkWhereInput
+}
+
+export type LinkOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type LinkCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  urlId?: Prisma.SortOrder
   url?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  campaignId?: Prisma.SortOrder
+  marketPlaceProductId?: Prisma.SortOrder
 }
 
 export type LinkMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  urlId?: Prisma.SortOrder
   url?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  campaignId?: Prisma.SortOrder
+  marketPlaceProductId?: Prisma.SortOrder
 }
 
 export type LinkMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  urlId?: Prisma.SortOrder
   url?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  campaignId?: Prisma.SortOrder
+  marketPlaceProductId?: Prisma.SortOrder
 }
 
-export type LinkScalarRelationFilter = {
-  is?: Prisma.LinkWhereInput
-  isNot?: Prisma.LinkWhereInput
+export type LinkCreateNestedManyWithoutMarketPlaceProductInput = {
+  create?: Prisma.XOR<Prisma.LinkCreateWithoutMarketPlaceProductInput, Prisma.LinkUncheckedCreateWithoutMarketPlaceProductInput> | Prisma.LinkCreateWithoutMarketPlaceProductInput[] | Prisma.LinkUncheckedCreateWithoutMarketPlaceProductInput[]
+  connectOrCreate?: Prisma.LinkCreateOrConnectWithoutMarketPlaceProductInput | Prisma.LinkCreateOrConnectWithoutMarketPlaceProductInput[]
+  createMany?: Prisma.LinkCreateManyMarketPlaceProductInputEnvelope
+  connect?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
 }
 
-export type LinkCreateNestedOneWithoutCampaignProductsLinksInput = {
-  create?: Prisma.XOR<Prisma.LinkCreateWithoutCampaignProductsLinksInput, Prisma.LinkUncheckedCreateWithoutCampaignProductsLinksInput>
-  connectOrCreate?: Prisma.LinkCreateOrConnectWithoutCampaignProductsLinksInput
-  connect?: Prisma.LinkWhereUniqueInput
+export type LinkUncheckedCreateNestedManyWithoutMarketPlaceProductInput = {
+  create?: Prisma.XOR<Prisma.LinkCreateWithoutMarketPlaceProductInput, Prisma.LinkUncheckedCreateWithoutMarketPlaceProductInput> | Prisma.LinkCreateWithoutMarketPlaceProductInput[] | Prisma.LinkUncheckedCreateWithoutMarketPlaceProductInput[]
+  connectOrCreate?: Prisma.LinkCreateOrConnectWithoutMarketPlaceProductInput | Prisma.LinkCreateOrConnectWithoutMarketPlaceProductInput[]
+  createMany?: Prisma.LinkCreateManyMarketPlaceProductInputEnvelope
+  connect?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
 }
 
-export type LinkUpdateOneRequiredWithoutCampaignProductsLinksNestedInput = {
-  create?: Prisma.XOR<Prisma.LinkCreateWithoutCampaignProductsLinksInput, Prisma.LinkUncheckedCreateWithoutCampaignProductsLinksInput>
-  connectOrCreate?: Prisma.LinkCreateOrConnectWithoutCampaignProductsLinksInput
-  upsert?: Prisma.LinkUpsertWithoutCampaignProductsLinksInput
-  connect?: Prisma.LinkWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.LinkUpdateToOneWithWhereWithoutCampaignProductsLinksInput, Prisma.LinkUpdateWithoutCampaignProductsLinksInput>, Prisma.LinkUncheckedUpdateWithoutCampaignProductsLinksInput>
+export type LinkUpdateManyWithoutMarketPlaceProductNestedInput = {
+  create?: Prisma.XOR<Prisma.LinkCreateWithoutMarketPlaceProductInput, Prisma.LinkUncheckedCreateWithoutMarketPlaceProductInput> | Prisma.LinkCreateWithoutMarketPlaceProductInput[] | Prisma.LinkUncheckedCreateWithoutMarketPlaceProductInput[]
+  connectOrCreate?: Prisma.LinkCreateOrConnectWithoutMarketPlaceProductInput | Prisma.LinkCreateOrConnectWithoutMarketPlaceProductInput[]
+  upsert?: Prisma.LinkUpsertWithWhereUniqueWithoutMarketPlaceProductInput | Prisma.LinkUpsertWithWhereUniqueWithoutMarketPlaceProductInput[]
+  createMany?: Prisma.LinkCreateManyMarketPlaceProductInputEnvelope
+  set?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  disconnect?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  delete?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  connect?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  update?: Prisma.LinkUpdateWithWhereUniqueWithoutMarketPlaceProductInput | Prisma.LinkUpdateWithWhereUniqueWithoutMarketPlaceProductInput[]
+  updateMany?: Prisma.LinkUpdateManyWithWhereWithoutMarketPlaceProductInput | Prisma.LinkUpdateManyWithWhereWithoutMarketPlaceProductInput[]
+  deleteMany?: Prisma.LinkScalarWhereInput | Prisma.LinkScalarWhereInput[]
 }
 
-export type LinkCreateWithoutCampaignProductsLinksInput = {
+export type LinkUncheckedUpdateManyWithoutMarketPlaceProductNestedInput = {
+  create?: Prisma.XOR<Prisma.LinkCreateWithoutMarketPlaceProductInput, Prisma.LinkUncheckedCreateWithoutMarketPlaceProductInput> | Prisma.LinkCreateWithoutMarketPlaceProductInput[] | Prisma.LinkUncheckedCreateWithoutMarketPlaceProductInput[]
+  connectOrCreate?: Prisma.LinkCreateOrConnectWithoutMarketPlaceProductInput | Prisma.LinkCreateOrConnectWithoutMarketPlaceProductInput[]
+  upsert?: Prisma.LinkUpsertWithWhereUniqueWithoutMarketPlaceProductInput | Prisma.LinkUpsertWithWhereUniqueWithoutMarketPlaceProductInput[]
+  createMany?: Prisma.LinkCreateManyMarketPlaceProductInputEnvelope
+  set?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  disconnect?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  delete?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  connect?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  update?: Prisma.LinkUpdateWithWhereUniqueWithoutMarketPlaceProductInput | Prisma.LinkUpdateWithWhereUniqueWithoutMarketPlaceProductInput[]
+  updateMany?: Prisma.LinkUpdateManyWithWhereWithoutMarketPlaceProductInput | Prisma.LinkUpdateManyWithWhereWithoutMarketPlaceProductInput[]
+  deleteMany?: Prisma.LinkScalarWhereInput | Prisma.LinkScalarWhereInput[]
+}
+
+export type LinkCreateNestedManyWithoutCampaignInput = {
+  create?: Prisma.XOR<Prisma.LinkCreateWithoutCampaignInput, Prisma.LinkUncheckedCreateWithoutCampaignInput> | Prisma.LinkCreateWithoutCampaignInput[] | Prisma.LinkUncheckedCreateWithoutCampaignInput[]
+  connectOrCreate?: Prisma.LinkCreateOrConnectWithoutCampaignInput | Prisma.LinkCreateOrConnectWithoutCampaignInput[]
+  createMany?: Prisma.LinkCreateManyCampaignInputEnvelope
+  connect?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+}
+
+export type LinkUncheckedCreateNestedManyWithoutCampaignInput = {
+  create?: Prisma.XOR<Prisma.LinkCreateWithoutCampaignInput, Prisma.LinkUncheckedCreateWithoutCampaignInput> | Prisma.LinkCreateWithoutCampaignInput[] | Prisma.LinkUncheckedCreateWithoutCampaignInput[]
+  connectOrCreate?: Prisma.LinkCreateOrConnectWithoutCampaignInput | Prisma.LinkCreateOrConnectWithoutCampaignInput[]
+  createMany?: Prisma.LinkCreateManyCampaignInputEnvelope
+  connect?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+}
+
+export type LinkUpdateManyWithoutCampaignNestedInput = {
+  create?: Prisma.XOR<Prisma.LinkCreateWithoutCampaignInput, Prisma.LinkUncheckedCreateWithoutCampaignInput> | Prisma.LinkCreateWithoutCampaignInput[] | Prisma.LinkUncheckedCreateWithoutCampaignInput[]
+  connectOrCreate?: Prisma.LinkCreateOrConnectWithoutCampaignInput | Prisma.LinkCreateOrConnectWithoutCampaignInput[]
+  upsert?: Prisma.LinkUpsertWithWhereUniqueWithoutCampaignInput | Prisma.LinkUpsertWithWhereUniqueWithoutCampaignInput[]
+  createMany?: Prisma.LinkCreateManyCampaignInputEnvelope
+  set?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  disconnect?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  delete?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  connect?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  update?: Prisma.LinkUpdateWithWhereUniqueWithoutCampaignInput | Prisma.LinkUpdateWithWhereUniqueWithoutCampaignInput[]
+  updateMany?: Prisma.LinkUpdateManyWithWhereWithoutCampaignInput | Prisma.LinkUpdateManyWithWhereWithoutCampaignInput[]
+  deleteMany?: Prisma.LinkScalarWhereInput | Prisma.LinkScalarWhereInput[]
+}
+
+export type LinkUncheckedUpdateManyWithoutCampaignNestedInput = {
+  create?: Prisma.XOR<Prisma.LinkCreateWithoutCampaignInput, Prisma.LinkUncheckedCreateWithoutCampaignInput> | Prisma.LinkCreateWithoutCampaignInput[] | Prisma.LinkUncheckedCreateWithoutCampaignInput[]
+  connectOrCreate?: Prisma.LinkCreateOrConnectWithoutCampaignInput | Prisma.LinkCreateOrConnectWithoutCampaignInput[]
+  upsert?: Prisma.LinkUpsertWithWhereUniqueWithoutCampaignInput | Prisma.LinkUpsertWithWhereUniqueWithoutCampaignInput[]
+  createMany?: Prisma.LinkCreateManyCampaignInputEnvelope
+  set?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  disconnect?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  delete?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  connect?: Prisma.LinkWhereUniqueInput | Prisma.LinkWhereUniqueInput[]
+  update?: Prisma.LinkUpdateWithWhereUniqueWithoutCampaignInput | Prisma.LinkUpdateWithWhereUniqueWithoutCampaignInput[]
+  updateMany?: Prisma.LinkUpdateManyWithWhereWithoutCampaignInput | Prisma.LinkUpdateManyWithWhereWithoutCampaignInput[]
+  deleteMany?: Prisma.LinkScalarWhereInput | Prisma.LinkScalarWhereInput[]
+}
+
+export type LinkCreateWithoutMarketPlaceProductInput = {
   id?: string
+  urlId: string
   url: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  campaign: Prisma.CampaignCreateNestedOneWithoutLinksInput
 }
 
-export type LinkUncheckedCreateWithoutCampaignProductsLinksInput = {
+export type LinkUncheckedCreateWithoutMarketPlaceProductInput = {
   id?: string
+  urlId: string
   url: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  campaignId: string
 }
 
-export type LinkCreateOrConnectWithoutCampaignProductsLinksInput = {
+export type LinkCreateOrConnectWithoutMarketPlaceProductInput = {
   where: Prisma.LinkWhereUniqueInput
-  create: Prisma.XOR<Prisma.LinkCreateWithoutCampaignProductsLinksInput, Prisma.LinkUncheckedCreateWithoutCampaignProductsLinksInput>
+  create: Prisma.XOR<Prisma.LinkCreateWithoutMarketPlaceProductInput, Prisma.LinkUncheckedCreateWithoutMarketPlaceProductInput>
 }
 
-export type LinkUpsertWithoutCampaignProductsLinksInput = {
-  update: Prisma.XOR<Prisma.LinkUpdateWithoutCampaignProductsLinksInput, Prisma.LinkUncheckedUpdateWithoutCampaignProductsLinksInput>
-  create: Prisma.XOR<Prisma.LinkCreateWithoutCampaignProductsLinksInput, Prisma.LinkUncheckedCreateWithoutCampaignProductsLinksInput>
-  where?: Prisma.LinkWhereInput
+export type LinkCreateManyMarketPlaceProductInputEnvelope = {
+  data: Prisma.LinkCreateManyMarketPlaceProductInput | Prisma.LinkCreateManyMarketPlaceProductInput[]
+  skipDuplicates?: boolean
 }
 
-export type LinkUpdateToOneWithWhereWithoutCampaignProductsLinksInput = {
-  where?: Prisma.LinkWhereInput
-  data: Prisma.XOR<Prisma.LinkUpdateWithoutCampaignProductsLinksInput, Prisma.LinkUncheckedUpdateWithoutCampaignProductsLinksInput>
+export type LinkUpsertWithWhereUniqueWithoutMarketPlaceProductInput = {
+  where: Prisma.LinkWhereUniqueInput
+  update: Prisma.XOR<Prisma.LinkUpdateWithoutMarketPlaceProductInput, Prisma.LinkUncheckedUpdateWithoutMarketPlaceProductInput>
+  create: Prisma.XOR<Prisma.LinkCreateWithoutMarketPlaceProductInput, Prisma.LinkUncheckedCreateWithoutMarketPlaceProductInput>
 }
 
-export type LinkUpdateWithoutCampaignProductsLinksInput = {
+export type LinkUpdateWithWhereUniqueWithoutMarketPlaceProductInput = {
+  where: Prisma.LinkWhereUniqueInput
+  data: Prisma.XOR<Prisma.LinkUpdateWithoutMarketPlaceProductInput, Prisma.LinkUncheckedUpdateWithoutMarketPlaceProductInput>
+}
+
+export type LinkUpdateManyWithWhereWithoutMarketPlaceProductInput = {
+  where: Prisma.LinkScalarWhereInput
+  data: Prisma.XOR<Prisma.LinkUpdateManyMutationInput, Prisma.LinkUncheckedUpdateManyWithoutMarketPlaceProductInput>
+}
+
+export type LinkScalarWhereInput = {
+  AND?: Prisma.LinkScalarWhereInput | Prisma.LinkScalarWhereInput[]
+  OR?: Prisma.LinkScalarWhereInput[]
+  NOT?: Prisma.LinkScalarWhereInput | Prisma.LinkScalarWhereInput[]
+  id?: Prisma.StringFilter<"Link"> | string
+  urlId?: Prisma.StringFilter<"Link"> | string
+  url?: Prisma.StringFilter<"Link"> | string
+  createdAt?: Prisma.DateTimeFilter<"Link"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Link"> | Date | string
+  campaignId?: Prisma.StringFilter<"Link"> | string
+  marketPlaceProductId?: Prisma.StringFilter<"Link"> | string
+}
+
+export type LinkCreateWithoutCampaignInput = {
+  id?: string
+  urlId: string
+  url: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  marketPlaceProduct?: Prisma.MarketPlaceProductCreateNestedOneWithoutLinksInput
+}
+
+export type LinkUncheckedCreateWithoutCampaignInput = {
+  id?: string
+  urlId: string
+  url: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  marketPlaceProductId: string
+}
+
+export type LinkCreateOrConnectWithoutCampaignInput = {
+  where: Prisma.LinkWhereUniqueInput
+  create: Prisma.XOR<Prisma.LinkCreateWithoutCampaignInput, Prisma.LinkUncheckedCreateWithoutCampaignInput>
+}
+
+export type LinkCreateManyCampaignInputEnvelope = {
+  data: Prisma.LinkCreateManyCampaignInput | Prisma.LinkCreateManyCampaignInput[]
+  skipDuplicates?: boolean
+}
+
+export type LinkUpsertWithWhereUniqueWithoutCampaignInput = {
+  where: Prisma.LinkWhereUniqueInput
+  update: Prisma.XOR<Prisma.LinkUpdateWithoutCampaignInput, Prisma.LinkUncheckedUpdateWithoutCampaignInput>
+  create: Prisma.XOR<Prisma.LinkCreateWithoutCampaignInput, Prisma.LinkUncheckedCreateWithoutCampaignInput>
+}
+
+export type LinkUpdateWithWhereUniqueWithoutCampaignInput = {
+  where: Prisma.LinkWhereUniqueInput
+  data: Prisma.XOR<Prisma.LinkUpdateWithoutCampaignInput, Prisma.LinkUncheckedUpdateWithoutCampaignInput>
+}
+
+export type LinkUpdateManyWithWhereWithoutCampaignInput = {
+  where: Prisma.LinkScalarWhereInput
+  data: Prisma.XOR<Prisma.LinkUpdateManyMutationInput, Prisma.LinkUncheckedUpdateManyWithoutCampaignInput>
+}
+
+export type LinkCreateManyMarketPlaceProductInput = {
+  id?: string
+  urlId: string
+  url: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  campaignId: string
+}
+
+export type LinkUpdateWithoutMarketPlaceProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  urlId?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  campaign?: Prisma.CampaignUpdateOneRequiredWithoutLinksNestedInput
 }
 
-export type LinkUncheckedUpdateWithoutCampaignProductsLinksInput = {
+export type LinkUncheckedUpdateWithoutMarketPlaceProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  urlId?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  campaignId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type LinkUncheckedUpdateManyWithoutMarketPlaceProductInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  urlId?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  campaignId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type LinkCreateManyCampaignInput = {
+  id?: string
+  urlId: string
+  url: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  marketPlaceProductId: string
+}
+
+export type LinkUpdateWithoutCampaignInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  urlId?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  marketPlaceProduct?: Prisma.MarketPlaceProductUpdateOneWithoutLinksNestedInput
+}
+
+export type LinkUncheckedUpdateWithoutCampaignInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  urlId?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  marketPlaceProductId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type LinkUncheckedUpdateManyWithoutCampaignInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  urlId?: Prisma.StringFieldUpdateOperationsInput | string
+  url?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  marketPlaceProductId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
 
 export type LinkSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  urlId?: boolean
   url?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  CampaignProductsLinks?: boolean | Prisma.Link$CampaignProductsLinksArgs<ExtArgs>
+  campaignId?: boolean
+  marketPlaceProductId?: boolean
+  campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
+  marketPlaceProduct?: boolean | Prisma.Link$marketPlaceProductArgs<ExtArgs>
 }, ExtArgs["result"]["link"]>
 
 export type LinkSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  urlId?: boolean
   url?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  campaignId?: boolean
+  marketPlaceProductId?: boolean
+  campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
+  marketPlaceProduct?: boolean | Prisma.Link$marketPlaceProductArgs<ExtArgs>
 }, ExtArgs["result"]["link"]>
 
 export type LinkSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  urlId?: boolean
   url?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  campaignId?: boolean
+  marketPlaceProductId?: boolean
+  campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
+  marketPlaceProduct?: boolean | Prisma.Link$marketPlaceProductArgs<ExtArgs>
 }, ExtArgs["result"]["link"]>
 
 export type LinkSelectScalar = {
   id?: boolean
+  urlId?: boolean
   url?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  campaignId?: boolean
+  marketPlaceProductId?: boolean
 }
 
-export type LinkOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "url" | "createdAt" | "updatedAt", ExtArgs["result"]["link"]>
+export type LinkOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "urlId" | "url" | "createdAt" | "updatedAt" | "campaignId" | "marketPlaceProductId", ExtArgs["result"]["link"]>
 export type LinkInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  CampaignProductsLinks?: boolean | Prisma.Link$CampaignProductsLinksArgs<ExtArgs>
+  campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
+  marketPlaceProduct?: boolean | Prisma.Link$marketPlaceProductArgs<ExtArgs>
 }
-export type LinkIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type LinkIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type LinkIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
+  marketPlaceProduct?: boolean | Prisma.Link$marketPlaceProductArgs<ExtArgs>
+}
+export type LinkIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
+  marketPlaceProduct?: boolean | Prisma.Link$marketPlaceProductArgs<ExtArgs>
+}
 
 export type $LinkPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Link"
   objects: {
-    CampaignProductsLinks: Prisma.$CampaignProductsLinksPayload<ExtArgs> | null
+    campaign: Prisma.$CampaignPayload<ExtArgs>
+    marketPlaceProduct: Prisma.$MarketPlaceProductPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    urlId: string
     url: string
     createdAt: Date
     updatedAt: Date
+    campaignId: string
+    marketPlaceProductId: string
   }, ExtArgs["result"]["link"]>
   composites: {}
 }
@@ -795,7 +1090,8 @@ readonly fields: LinkFieldRefs;
  */
 export interface Prisma__LinkClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  CampaignProductsLinks<T extends Prisma.Link$CampaignProductsLinksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Link$CampaignProductsLinksArgs<ExtArgs>>): Prisma.Prisma__CampaignProductsLinksClient<runtime.Types.Result.GetResult<Prisma.$CampaignProductsLinksPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  campaign<T extends Prisma.CampaignDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CampaignDefaultArgs<ExtArgs>>): Prisma.Prisma__CampaignClient<runtime.Types.Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  marketPlaceProduct<T extends Prisma.Link$marketPlaceProductArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Link$marketPlaceProductArgs<ExtArgs>>): Prisma.Prisma__MarketPlaceProductClient<runtime.Types.Result.GetResult<Prisma.$MarketPlaceProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -826,9 +1122,12 @@ export interface Prisma__LinkClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface LinkFieldRefs {
   readonly id: Prisma.FieldRef<"Link", 'String'>
+  readonly urlId: Prisma.FieldRef<"Link", 'String'>
   readonly url: Prisma.FieldRef<"Link", 'String'>
   readonly createdAt: Prisma.FieldRef<"Link", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Link", 'DateTime'>
+  readonly campaignId: Prisma.FieldRef<"Link", 'String'>
+  readonly marketPlaceProductId: Prisma.FieldRef<"Link", 'String'>
 }
     
 
@@ -1078,6 +1377,10 @@ export type LinkCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions
    */
   data: Prisma.LinkCreateManyInput | Prisma.LinkCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LinkIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1148,6 +1451,10 @@ export type LinkUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions
    * Limit how many Links to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LinkIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1217,22 +1524,22 @@ export type LinkDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * Link.CampaignProductsLinks
+ * Link.marketPlaceProduct
  */
-export type Link$CampaignProductsLinksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Link$marketPlaceProductArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the CampaignProductsLinks
+   * Select specific fields to fetch from the MarketPlaceProduct
    */
-  select?: Prisma.CampaignProductsLinksSelect<ExtArgs> | null
+  select?: Prisma.MarketPlaceProductSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the CampaignProductsLinks
+   * Omit specific fields from the MarketPlaceProduct
    */
-  omit?: Prisma.CampaignProductsLinksOmit<ExtArgs> | null
+  omit?: Prisma.MarketPlaceProductOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.CampaignProductsLinksInclude<ExtArgs> | null
-  where?: Prisma.CampaignProductsLinksWhereInput
+  include?: Prisma.MarketPlaceProductInclude<ExtArgs> | null
+  where?: Prisma.MarketPlaceProductWhereInput
 }
 
 /**

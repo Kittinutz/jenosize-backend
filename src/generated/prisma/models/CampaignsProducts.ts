@@ -182,9 +182,8 @@ export type CampaignsProductsWhereInput = {
   productId?: Prisma.StringFilter<"CampaignsProducts"> | string
   createdAt?: Prisma.DateTimeFilter<"CampaignsProducts"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CampaignsProducts"> | Date | string
-  Campaign?: Prisma.XOR<Prisma.CampaignScalarRelationFilter, Prisma.CampaignWhereInput>
-  Product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
-  CampaignProductsLinks?: Prisma.XOR<Prisma.CampaignProductsLinksNullableScalarRelationFilter, Prisma.CampaignProductsLinksWhereInput> | null
+  campaign?: Prisma.XOR<Prisma.CampaignScalarRelationFilter, Prisma.CampaignWhereInput>
+  product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
 }
 
 export type CampaignsProductsOrderByWithRelationInput = {
@@ -193,9 +192,8 @@ export type CampaignsProductsOrderByWithRelationInput = {
   productId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  Campaign?: Prisma.CampaignOrderByWithRelationInput
-  Product?: Prisma.ProductOrderByWithRelationInput
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksOrderByWithRelationInput
+  campaign?: Prisma.CampaignOrderByWithRelationInput
+  product?: Prisma.ProductOrderByWithRelationInput
 }
 
 export type CampaignsProductsWhereUniqueInput = Prisma.AtLeast<{
@@ -207,9 +205,8 @@ export type CampaignsProductsWhereUniqueInput = Prisma.AtLeast<{
   productId?: Prisma.StringFilter<"CampaignsProducts"> | string
   createdAt?: Prisma.DateTimeFilter<"CampaignsProducts"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CampaignsProducts"> | Date | string
-  Campaign?: Prisma.XOR<Prisma.CampaignScalarRelationFilter, Prisma.CampaignWhereInput>
-  Product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
-  CampaignProductsLinks?: Prisma.XOR<Prisma.CampaignProductsLinksNullableScalarRelationFilter, Prisma.CampaignProductsLinksWhereInput> | null
+  campaign?: Prisma.XOR<Prisma.CampaignScalarRelationFilter, Prisma.CampaignWhereInput>
+  product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
 }, "id">
 
 export type CampaignsProductsOrderByWithAggregationInput = {
@@ -238,9 +235,8 @@ export type CampaignsProductsCreateInput = {
   id?: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  Campaign: Prisma.CampaignCreateNestedOneWithoutCampaignsProductsInput
-  Product: Prisma.ProductCreateNestedOneWithoutCampaignsProductsInput
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksCreateNestedOneWithoutCampaignsProductsInput
+  campaign: Prisma.CampaignCreateNestedOneWithoutCampaignsProductsInput
+  product: Prisma.ProductCreateNestedOneWithoutCampaignsProductsInput
 }
 
 export type CampaignsProductsUncheckedCreateInput = {
@@ -249,16 +245,14 @@ export type CampaignsProductsUncheckedCreateInput = {
   productId: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksUncheckedCreateNestedOneWithoutCampaignsProductsInput
 }
 
 export type CampaignsProductsUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  Campaign?: Prisma.CampaignUpdateOneRequiredWithoutCampaignsProductsNestedInput
-  Product?: Prisma.ProductUpdateOneRequiredWithoutCampaignsProductsNestedInput
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksUpdateOneWithoutCampaignsProductsNestedInput
+  campaign?: Prisma.CampaignUpdateOneRequiredWithoutCampaignsProductsNestedInput
+  product?: Prisma.ProductUpdateOneRequiredWithoutCampaignsProductsNestedInput
 }
 
 export type CampaignsProductsUncheckedUpdateInput = {
@@ -267,7 +261,6 @@ export type CampaignsProductsUncheckedUpdateInput = {
   productId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksUncheckedUpdateOneWithoutCampaignsProductsNestedInput
 }
 
 export type CampaignsProductsCreateManyInput = {
@@ -324,11 +317,6 @@ export type CampaignsProductsMinOrderByAggregateInput = {
   productId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-}
-
-export type CampaignsProductsScalarRelationFilter = {
-  is?: Prisma.CampaignsProductsWhereInput
-  isNot?: Prisma.CampaignsProductsWhereInput
 }
 
 export type CampaignsProductsCreateNestedManyWithoutProductInput = {
@@ -415,26 +403,11 @@ export type CampaignsProductsUncheckedUpdateManyWithoutCampaignNestedInput = {
   deleteMany?: Prisma.CampaignsProductsScalarWhereInput | Prisma.CampaignsProductsScalarWhereInput[]
 }
 
-export type CampaignsProductsCreateNestedOneWithoutCampaignProductsLinksInput = {
-  create?: Prisma.XOR<Prisma.CampaignsProductsCreateWithoutCampaignProductsLinksInput, Prisma.CampaignsProductsUncheckedCreateWithoutCampaignProductsLinksInput>
-  connectOrCreate?: Prisma.CampaignsProductsCreateOrConnectWithoutCampaignProductsLinksInput
-  connect?: Prisma.CampaignsProductsWhereUniqueInput
-}
-
-export type CampaignsProductsUpdateOneRequiredWithoutCampaignProductsLinksNestedInput = {
-  create?: Prisma.XOR<Prisma.CampaignsProductsCreateWithoutCampaignProductsLinksInput, Prisma.CampaignsProductsUncheckedCreateWithoutCampaignProductsLinksInput>
-  connectOrCreate?: Prisma.CampaignsProductsCreateOrConnectWithoutCampaignProductsLinksInput
-  upsert?: Prisma.CampaignsProductsUpsertWithoutCampaignProductsLinksInput
-  connect?: Prisma.CampaignsProductsWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.CampaignsProductsUpdateToOneWithWhereWithoutCampaignProductsLinksInput, Prisma.CampaignsProductsUpdateWithoutCampaignProductsLinksInput>, Prisma.CampaignsProductsUncheckedUpdateWithoutCampaignProductsLinksInput>
-}
-
 export type CampaignsProductsCreateWithoutProductInput = {
   id?: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  Campaign: Prisma.CampaignCreateNestedOneWithoutCampaignsProductsInput
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksCreateNestedOneWithoutCampaignsProductsInput
+  campaign: Prisma.CampaignCreateNestedOneWithoutCampaignsProductsInput
 }
 
 export type CampaignsProductsUncheckedCreateWithoutProductInput = {
@@ -442,7 +415,6 @@ export type CampaignsProductsUncheckedCreateWithoutProductInput = {
   campaignId: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksUncheckedCreateNestedOneWithoutCampaignsProductsInput
 }
 
 export type CampaignsProductsCreateOrConnectWithoutProductInput = {
@@ -486,8 +458,7 @@ export type CampaignsProductsCreateWithoutCampaignInput = {
   id?: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  Product: Prisma.ProductCreateNestedOneWithoutCampaignsProductsInput
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksCreateNestedOneWithoutCampaignsProductsInput
+  product: Prisma.ProductCreateNestedOneWithoutCampaignsProductsInput
 }
 
 export type CampaignsProductsUncheckedCreateWithoutCampaignInput = {
@@ -495,7 +466,6 @@ export type CampaignsProductsUncheckedCreateWithoutCampaignInput = {
   productId: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksUncheckedCreateNestedOneWithoutCampaignsProductsInput
 }
 
 export type CampaignsProductsCreateOrConnectWithoutCampaignInput = {
@@ -524,54 +494,6 @@ export type CampaignsProductsUpdateManyWithWhereWithoutCampaignInput = {
   data: Prisma.XOR<Prisma.CampaignsProductsUpdateManyMutationInput, Prisma.CampaignsProductsUncheckedUpdateManyWithoutCampaignInput>
 }
 
-export type CampaignsProductsCreateWithoutCampaignProductsLinksInput = {
-  id?: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  Campaign: Prisma.CampaignCreateNestedOneWithoutCampaignsProductsInput
-  Product: Prisma.ProductCreateNestedOneWithoutCampaignsProductsInput
-}
-
-export type CampaignsProductsUncheckedCreateWithoutCampaignProductsLinksInput = {
-  id?: string
-  campaignId: string
-  productId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type CampaignsProductsCreateOrConnectWithoutCampaignProductsLinksInput = {
-  where: Prisma.CampaignsProductsWhereUniqueInput
-  create: Prisma.XOR<Prisma.CampaignsProductsCreateWithoutCampaignProductsLinksInput, Prisma.CampaignsProductsUncheckedCreateWithoutCampaignProductsLinksInput>
-}
-
-export type CampaignsProductsUpsertWithoutCampaignProductsLinksInput = {
-  update: Prisma.XOR<Prisma.CampaignsProductsUpdateWithoutCampaignProductsLinksInput, Prisma.CampaignsProductsUncheckedUpdateWithoutCampaignProductsLinksInput>
-  create: Prisma.XOR<Prisma.CampaignsProductsCreateWithoutCampaignProductsLinksInput, Prisma.CampaignsProductsUncheckedCreateWithoutCampaignProductsLinksInput>
-  where?: Prisma.CampaignsProductsWhereInput
-}
-
-export type CampaignsProductsUpdateToOneWithWhereWithoutCampaignProductsLinksInput = {
-  where?: Prisma.CampaignsProductsWhereInput
-  data: Prisma.XOR<Prisma.CampaignsProductsUpdateWithoutCampaignProductsLinksInput, Prisma.CampaignsProductsUncheckedUpdateWithoutCampaignProductsLinksInput>
-}
-
-export type CampaignsProductsUpdateWithoutCampaignProductsLinksInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  Campaign?: Prisma.CampaignUpdateOneRequiredWithoutCampaignsProductsNestedInput
-  Product?: Prisma.ProductUpdateOneRequiredWithoutCampaignsProductsNestedInput
-}
-
-export type CampaignsProductsUncheckedUpdateWithoutCampaignProductsLinksInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  campaignId?: Prisma.StringFieldUpdateOperationsInput | string
-  productId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
 export type CampaignsProductsCreateManyProductInput = {
   id?: string
   campaignId: string
@@ -583,8 +505,7 @@ export type CampaignsProductsUpdateWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  Campaign?: Prisma.CampaignUpdateOneRequiredWithoutCampaignsProductsNestedInput
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksUpdateOneWithoutCampaignsProductsNestedInput
+  campaign?: Prisma.CampaignUpdateOneRequiredWithoutCampaignsProductsNestedInput
 }
 
 export type CampaignsProductsUncheckedUpdateWithoutProductInput = {
@@ -592,7 +513,6 @@ export type CampaignsProductsUncheckedUpdateWithoutProductInput = {
   campaignId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksUncheckedUpdateOneWithoutCampaignsProductsNestedInput
 }
 
 export type CampaignsProductsUncheckedUpdateManyWithoutProductInput = {
@@ -613,8 +533,7 @@ export type CampaignsProductsUpdateWithoutCampaignInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  Product?: Prisma.ProductUpdateOneRequiredWithoutCampaignsProductsNestedInput
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksUpdateOneWithoutCampaignsProductsNestedInput
+  product?: Prisma.ProductUpdateOneRequiredWithoutCampaignsProductsNestedInput
 }
 
 export type CampaignsProductsUncheckedUpdateWithoutCampaignInput = {
@@ -622,7 +541,6 @@ export type CampaignsProductsUncheckedUpdateWithoutCampaignInput = {
   productId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  CampaignProductsLinks?: Prisma.CampaignProductsLinksUncheckedUpdateOneWithoutCampaignsProductsNestedInput
 }
 
 export type CampaignsProductsUncheckedUpdateManyWithoutCampaignInput = {
@@ -640,9 +558,8 @@ export type CampaignsProductsSelect<ExtArgs extends runtime.Types.Extensions.Int
   productId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  Campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
-  Product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
-  CampaignProductsLinks?: boolean | Prisma.CampaignsProducts$CampaignProductsLinksArgs<ExtArgs>
+  campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["campaignsProducts"]>
 
 export type CampaignsProductsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -651,8 +568,8 @@ export type CampaignsProductsSelectCreateManyAndReturn<ExtArgs extends runtime.T
   productId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  Campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
-  Product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["campaignsProducts"]>
 
 export type CampaignsProductsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -661,8 +578,8 @@ export type CampaignsProductsSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   productId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  Campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
-  Product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["campaignsProducts"]>
 
 export type CampaignsProductsSelectScalar = {
@@ -675,25 +592,23 @@ export type CampaignsProductsSelectScalar = {
 
 export type CampaignsProductsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "campaignId" | "productId" | "createdAt" | "updatedAt", ExtArgs["result"]["campaignsProducts"]>
 export type CampaignsProductsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
-  Product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
-  CampaignProductsLinks?: boolean | Prisma.CampaignsProducts$CampaignProductsLinksArgs<ExtArgs>
+  campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
 }
 export type CampaignsProductsIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
-  Product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
 }
 export type CampaignsProductsIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  Campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
-  Product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
+  campaign?: boolean | Prisma.CampaignDefaultArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
 }
 
 export type $CampaignsProductsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CampaignsProducts"
   objects: {
-    Campaign: Prisma.$CampaignPayload<ExtArgs>
-    Product: Prisma.$ProductPayload<ExtArgs>
-    CampaignProductsLinks: Prisma.$CampaignProductsLinksPayload<ExtArgs> | null
+    campaign: Prisma.$CampaignPayload<ExtArgs>
+    product: Prisma.$ProductPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1095,9 +1010,8 @@ readonly fields: CampaignsProductsFieldRefs;
  */
 export interface Prisma__CampaignsProductsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  Campaign<T extends Prisma.CampaignDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CampaignDefaultArgs<ExtArgs>>): Prisma.Prisma__CampaignClient<runtime.Types.Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  Product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  CampaignProductsLinks<T extends Prisma.CampaignsProducts$CampaignProductsLinksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CampaignsProducts$CampaignProductsLinksArgs<ExtArgs>>): Prisma.Prisma__CampaignProductsLinksClient<runtime.Types.Result.GetResult<Prisma.$CampaignProductsLinksPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  campaign<T extends Prisma.CampaignDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CampaignDefaultArgs<ExtArgs>>): Prisma.Prisma__CampaignClient<runtime.Types.Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1525,25 +1439,6 @@ export type CampaignsProductsDeleteManyArgs<ExtArgs extends runtime.Types.Extens
    * Limit how many CampaignsProducts to delete.
    */
   limit?: number
-}
-
-/**
- * CampaignsProducts.CampaignProductsLinks
- */
-export type CampaignsProducts$CampaignProductsLinksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the CampaignProductsLinks
-   */
-  select?: Prisma.CampaignProductsLinksSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the CampaignProductsLinks
-   */
-  omit?: Prisma.CampaignProductsLinksOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CampaignProductsLinksInclude<ExtArgs> | null
-  where?: Prisma.CampaignProductsLinksWhereInput
 }
 
 /**

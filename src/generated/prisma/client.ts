@@ -62,8 +62,3 @@ export type CampaignsProducts = Prisma.CampaignsProductsModel
  * 
  */
 export type Link = Prisma.LinkModel
-/**
- * Model CampaignProductsLinks
- * 
- */
-export type CampaignProductsLinks = Prisma.CampaignProductsLinksModel

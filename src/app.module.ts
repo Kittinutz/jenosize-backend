@@ -6,18 +6,18 @@ import { ProductModule } from './product/product.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { CampaignModule } from './campaign/campaign.module';
-import configuration from '../config/configuration';
+import { GoModule } from './go/go.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [configuration],
       isGlobal: true,
     }),
     SearchProductModule,
     ProductModule,
     PrismaModule,
     CampaignModule,
+    GoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

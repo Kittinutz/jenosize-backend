@@ -21,8 +21,8 @@ model Product {
   price       Float
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  CampaignsProducts   CampaignsProducts[]
-  MarketPlaceProduct MarketPlaceProduct[]
+  campaignsProducts   CampaignsProducts[]
+  marketPlaceProducts MarketPlaceProduct[]
  }
 
 model MarketPlaceProduct {
@@ -32,11 +32,13 @@ model MarketPlaceProduct {
   price       Float
   url         String
   platform    PlatformEnum
-  productId  String?   @unique
-  Product Product? @relation(fields: [productId], references: [id])
+  productId  String?
+  product Product? @relation(fields: [productId], references: [id])
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  links Link[]
 }
+
 
 enum PlatformEnum {
   LAZADA
@@ -53,7 +55,8 @@ model Campaign {
   UTMSource   String
   UTMMedium   String
   UTMCampaign String
-  CampaignsProducts   CampaignsProducts[]
+  campaignsProducts   CampaignsProducts[]
+  links Link[]
 }
 
 model CampaignsProducts {
@@ -62,26 +65,18 @@ model CampaignsProducts {
   productId   String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  Campaign Campaign @relation(fields: [campaignId], references: [id])
-  Product Product @relation(fields: [productId], references: [id])
-  CampaignProductsLinks CampaignProductsLinks?
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+
 }
 model Link {
   id          String   @id @default(uuid())
+  urlId    String    @unique
   url         String    @unique
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  CampaignProductsLinks CampaignProductsLinks?
+  campaignId String
+  marketPlaceProductId String
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+  marketPlaceProduct MarketPlaceProduct? @relation(fields: [marketPlaceProductId], references: [id])
 }
-
-model CampaignProductsLinks {
-  id          String   @id @default(uuid())
-  campaignProductsId String @unique
-  linkId      String @unique
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  CampaignsProducts CampaignsProducts @relation(fields: [campaignProductsId], references: [id])
-  Link Link @relation(fields: [linkId], references: [id])
-}
-
-

@@ -388,8 +388,7 @@ export const ModelName = {
   MarketPlaceProduct: 'MarketPlaceProduct',
   Campaign: 'Campaign',
   CampaignsProducts: 'CampaignsProducts',
-  Link: 'Link',
-  CampaignProductsLinks: 'CampaignProductsLinks'
+  Link: 'Link'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -405,7 +404,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "product" | "marketPlaceProduct" | "campaign" | "campaignsProducts" | "link" | "campaignProductsLinks"
+    modelProps: "product" | "marketPlaceProduct" | "campaign" | "campaignsProducts" | "link"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -779,80 +778,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    CampaignProductsLinks: {
-      payload: Prisma.$CampaignProductsLinksPayload<ExtArgs>
-      fields: Prisma.CampaignProductsLinksFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.CampaignProductsLinksFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignProductsLinksPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.CampaignProductsLinksFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignProductsLinksPayload>
-        }
-        findFirst: {
-          args: Prisma.CampaignProductsLinksFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignProductsLinksPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.CampaignProductsLinksFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignProductsLinksPayload>
-        }
-        findMany: {
-          args: Prisma.CampaignProductsLinksFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignProductsLinksPayload>[]
-        }
-        create: {
-          args: Prisma.CampaignProductsLinksCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignProductsLinksPayload>
-        }
-        createMany: {
-          args: Prisma.CampaignProductsLinksCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.CampaignProductsLinksCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignProductsLinksPayload>[]
-        }
-        delete: {
-          args: Prisma.CampaignProductsLinksDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignProductsLinksPayload>
-        }
-        update: {
-          args: Prisma.CampaignProductsLinksUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignProductsLinksPayload>
-        }
-        deleteMany: {
-          args: Prisma.CampaignProductsLinksDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.CampaignProductsLinksUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.CampaignProductsLinksUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignProductsLinksPayload>[]
-        }
-        upsert: {
-          args: Prisma.CampaignProductsLinksUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CampaignProductsLinksPayload>
-        }
-        aggregate: {
-          args: Prisma.CampaignProductsLinksAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateCampaignProductsLinks>
-        }
-        groupBy: {
-          args: Prisma.CampaignProductsLinksGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CampaignProductsLinksGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.CampaignProductsLinksCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CampaignProductsLinksCountAggregateOutputType> | number
-        }
-      }
-    }
   }
 } & {
   other: {
@@ -947,23 +872,15 @@ export type CampaignsProductsScalarFieldEnum = (typeof CampaignsProductsScalarFi
 
 export const LinkScalarFieldEnum = {
   id: 'id',
+  urlId: 'urlId',
   url: 'url',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  campaignId: 'campaignId',
+  marketPlaceProductId: 'marketPlaceProductId'
 } as const
 
 export type LinkScalarFieldEnum = (typeof LinkScalarFieldEnum)[keyof typeof LinkScalarFieldEnum]
-
-
-export const CampaignProductsLinksScalarFieldEnum = {
-  id: 'id',
-  campaignProductsId: 'campaignProductsId',
-  linkId: 'linkId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type CampaignProductsLinksScalarFieldEnum = (typeof CampaignProductsLinksScalarFieldEnum)[keyof typeof CampaignProductsLinksScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1165,7 +1082,6 @@ export type GlobalOmitConfig = {
   campaign?: Prisma.CampaignOmit
   campaignsProducts?: Prisma.CampaignsProductsOmit
   link?: Prisma.LinkOmit
-  campaignProductsLinks?: Prisma.CampaignProductsLinksOmit
 }
 
 /* Types for Logging */

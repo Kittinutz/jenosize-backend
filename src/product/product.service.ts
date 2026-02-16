@@ -9,12 +9,12 @@ export class ProductService {
   constructor(private prisma: PrismaService) {}
 
   async create(createProductDto: CreateProductDto) {
-    await this.prisma.product.create({
+    return await this.prisma.product.create({
       data: {
         title: createProductDto.title,
         price: Number(createProductDto.price),
         image_url: createProductDto.imageUrl,
-        MarketPlaceProduct: {
+        marketPlaceProducts: {
           create: createProductDto.marketProduct?.map((mp) => ({
             platform: mp.platform,
             title: mp.title,
@@ -24,14 +24,16 @@ export class ProductService {
           })),
         },
       },
+      include: {
+        marketPlaceProducts: true,
+      },
     });
-    return 'This action adds a new product';
   }
 
   async findAll(): Promise<Product[]> {
     return await this.prisma.product.findMany({
       include: {
-        MarketPlaceProduct: true,
+        marketPlaceProducts: true,
       },
     });
   }
@@ -40,7 +42,7 @@ export class ProductService {
     return await this.prisma.product.findUnique({
       where: { id: String(id) },
       include: {
-        MarketPlaceProduct: true,
+        marketPlaceProducts: true,
       },
     });
   }
@@ -52,7 +54,7 @@ export class ProductService {
         title: updateProductDto.title,
         price: Number(updateProductDto.price),
         image_url: updateProductDto.imageUrl,
-        MarketPlaceProduct: {
+        marketPlaceProducts: {
           deleteMany: {}, // Delete existing marketplace products
           create: updateProductDto.marketProduct?.map((mp) => ({
             platform: mp.platform,
@@ -70,7 +72,7 @@ export class ProductService {
     return this.prisma.product.delete({
       where: { id: String(id) },
       include: {
-        MarketPlaceProduct: true,
+        marketPlaceProducts: true,
       },
     });
   }
