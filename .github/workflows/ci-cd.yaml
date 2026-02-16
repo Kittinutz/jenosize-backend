@@ -1,12 +1,10 @@
 on:
   push:
-    branches:
-      - main
     tags:
       - 'v*'
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: jenosize-backend
+  IMAGE_NAME: Kittinutz/jenosize-backend
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
