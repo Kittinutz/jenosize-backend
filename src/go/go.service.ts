@@ -1,5 +1,4 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Campaign } from 'src/generated/prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
@@ -19,10 +18,10 @@ export class GoService {
     if (!link || !link.campaign || !link.marketPlaceProduct) {
       throw new NotFoundException('Link not found');
     } else {
-      const redirectUrl = new URL(link.marketPlaceProduct.url as string);
+      const redirectUrl = new URL(link.marketPlaceProduct.url);
       redirectUrl.search = '';
 
-      const { UTMSource, UTMMedium, UTMCampaign } = link.campaign as Campaign;
+      const { UTMSource, UTMMedium, UTMCampaign } = link.campaign;
 
       const searchRawData = {
         utm_source: UTMSource,

@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsUrl, IsNotEmpty, Matches } from 'class-validator';
-import { platform } from 'process';
 
 export class SearchProductDto {
   @ApiProperty({

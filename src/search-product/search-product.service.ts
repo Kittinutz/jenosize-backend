@@ -3,10 +3,13 @@ import { SearchProductResponseDto } from './search-product.dto';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 puppeteer.use(StealthPlugin());
-import { Browser, Page } from 'puppeteer';
+import { Browser, Page, Protocol } from 'puppeteer';
 import fs from 'fs';
 import userAgent from 'user-agents';
 import { PlatformEnum } from '../enum/platformEnum';
+interface StorageInterface {
+  setItem(key: string, value: string): Promise<void>;
+}
 @Injectable()
 export class SearchProductService {
   async searchProductLazada(url: string): Promise<SearchProductResponseDto> {
@@ -23,9 +26,11 @@ export class SearchProductService {
     try {
       const page = await browser.newPage();
 
-      // Set user agent to match the browser
       const userAgentString = new userAgent().toString();
-      await page.setUserAgent(userAgentString, userAgent.data);
+      await page.setUserAgent(
+        userAgentString as string,
+        userAgent.data as Protocol.Emulation.UserAgentMetadata,
+      );
 
       await page.goto(url, {
         waitUntil: 'networkidle2',
@@ -38,7 +43,7 @@ export class SearchProductService {
         { timeout: 10000 },
       );
 
-      // Extract product information
+      // eslint-disable-next-line @typescript-eslint/require-await
       const productData = await page.evaluate(async () => {
         // Product title
         const productTitle =
@@ -48,7 +53,6 @@ export class SearchProductService {
             ?.textContent ||
           '';
 
-        // Product image - main product image from gallery
         const productImage =
           (
             document.querySelector(
@@ -79,10 +83,7 @@ export class SearchProductService {
           document.querySelector('.pdp-link_size_l')?.textContent ||
           '';
 
-        // Price - current/discounted price (sale price) with multiple fallback options
         let price = '';
-
-        // Try method 1: Separate sign and amount
         const salePriceAmount =
           document.querySelector(
             '.pdp-v2-product-price-content-salePrice-amount',
@@ -92,7 +93,6 @@ export class SearchProductService {
           price = `${salePriceAmount}`;
         }
 
-        // Try method 2: Get full price container
         if (!price) {
           const fullPriceElement = document.querySelector(
             '.pdp-v2-product-price-content-salePrice',
@@ -102,7 +102,6 @@ export class SearchProductService {
           }
         }
 
-        // Try method 3: Alternative price selectors
         if (!price) {
           price =
             document.querySelector('.pdp-price_type_normal')?.textContent ||
@@ -154,8 +153,11 @@ export class SearchProductService {
       });
 
       page = await browser.newPage();
-      const userAgentString = new userAgent().toString();
-      await page.setUserAgent(userAgentString, userAgent.data);
+      const userAgentString = new userAgent().toString() as string;
+      await page.setUserAgent(
+        userAgentString,
+        userAgent.data as Protocol.Emulation.UserAgentMetadata,
+      );
 
       await page.setExtraHTTPHeaders({
         accept:
@@ -200,13 +202,18 @@ export class SearchProductService {
           sessionStorage: sessionStorageData,
           localStorage: localStorageData,
         }) => {
-          for (const key in sessionStorageData) {
-            await sessionStorage.setItem(key, sessionStorageData[key]);
+          for (const key in sessionStorageData as StorageInterface) {
+            await (sessionStorage as StorageInterface).setItem(
+              key,
+              sessionStorageData[key] as string,
+            );
           }
-          for (const key in localStorageData) {
-            await localStorage.setItem(key, localStorageData[key]);
+          for (const key in localStorageData as StorageInterface) {
+            await (localStorage as StorageInterface).setItem(
+              key,
+              localStorageData[key] as string,
+            );
           }
-          // Simulate user interaction to trigger any lazy loading or dynamic content
         },
         {
           sessionStorage,
@@ -220,9 +227,8 @@ export class SearchProductService {
       });
       await page.waitForSelector('h1.vR6K3w', { timeout: 10000 });
 
+      // eslint-disable-next-line @typescript-eslint/require-await
       const productData = await page.evaluate(async () => {
-        // Product title
-
         const productTitle =
           document.querySelector('h1.vR6K3w')?.textContent || '';
 
