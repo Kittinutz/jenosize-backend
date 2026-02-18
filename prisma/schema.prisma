@@ -37,6 +37,7 @@ model MarketPlaceProduct {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   links Link[]
+  clickEvents ClickEvent[]
 }
 
 
@@ -57,6 +58,7 @@ model Campaign {
   UTMCampaign String
   campaignsProducts   CampaignsProducts[]
   links Link[]
+  clickEvents ClickEvent[]
 }
 
 model CampaignsProducts {
@@ -79,4 +81,26 @@ model Link {
   marketPlaceProductId String
   campaign Campaign @relation(fields: [campaignId], references: [id],onDelete: Cascade)
   marketPlaceProduct MarketPlaceProduct? @relation(fields: [marketPlaceProductId], references: [id],onDelete: Cascade)
+  clickEvents ClickEvent[]
+}
+
+model ClickEvent {
+  id                   String       @id @default(uuid())
+  linkId               String
+  urlId                String       // denormalized for easy query
+  campaignId           String
+  marketPlaceProductId String?
+  productId            String?      // denormalized from marketPlaceProduct
+  platform             PlatformEnum? // denormalized from marketPlaceProduct
+  clickedAt            DateTime     @default(now())
+
+  link               Link?             @relation(fields: [linkId], references: [id])
+  campaign           Campaign?           @relation(fields: [campaignId], references: [id])
+  marketPlaceProduct MarketPlaceProduct? @relation(fields: [marketPlaceProductId], references: [id])
+
+  @@index([campaignId, clickedAt])
+  @@index([productId, clickedAt])
+  @@index([platform, clickedAt])
+  @@index([urlId, clickedAt])
+  @@index([clickedAt]) // for time-range queries
 }

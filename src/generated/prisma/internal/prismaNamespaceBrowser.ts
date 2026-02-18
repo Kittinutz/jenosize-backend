@@ -55,7 +55,8 @@ export const ModelName = {
   MarketPlaceProduct: 'MarketPlaceProduct',
   Campaign: 'Campaign',
   CampaignsProducts: 'CampaignsProducts',
-  Link: 'Link'
+  Link: 'Link',
+  ClickEvent: 'ClickEvent'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -138,6 +139,20 @@ export const LinkScalarFieldEnum = {
 } as const
 
 export type LinkScalarFieldEnum = (typeof LinkScalarFieldEnum)[keyof typeof LinkScalarFieldEnum]
+
+
+export const ClickEventScalarFieldEnum = {
+  id: 'id',
+  linkId: 'linkId',
+  urlId: 'urlId',
+  campaignId: 'campaignId',
+  marketPlaceProductId: 'marketPlaceProductId',
+  productId: 'productId',
+  platform: 'platform',
+  clickedAt: 'clickedAt'
+} as const
+
+export type ClickEventScalarFieldEnum = (typeof ClickEventScalarFieldEnum)[keyof typeof ClickEventScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -250,6 +250,7 @@ export type MarketPlaceProductWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"MarketPlaceProduct"> | Date | string
   product?: Prisma.XOR<Prisma.ProductNullableScalarRelationFilter, Prisma.ProductWhereInput> | null
   links?: Prisma.LinkListRelationFilter
+  clickEvents?: Prisma.ClickEventListRelationFilter
 }
 
 export type MarketPlaceProductOrderByWithRelationInput = {
@@ -264,6 +265,7 @@ export type MarketPlaceProductOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   product?: Prisma.ProductOrderByWithRelationInput
   links?: Prisma.LinkOrderByRelationAggregateInput
+  clickEvents?: Prisma.ClickEventOrderByRelationAggregateInput
 }
 
 export type MarketPlaceProductWhereUniqueInput = Prisma.AtLeast<{
@@ -281,6 +283,7 @@ export type MarketPlaceProductWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"MarketPlaceProduct"> | Date | string
   product?: Prisma.XOR<Prisma.ProductNullableScalarRelationFilter, Prisma.ProductWhereInput> | null
   links?: Prisma.LinkListRelationFilter
+  clickEvents?: Prisma.ClickEventListRelationFilter
 }, "id">
 
 export type MarketPlaceProductOrderByWithAggregationInput = {
@@ -326,6 +329,7 @@ export type MarketPlaceProductCreateInput = {
   updatedAt?: Date | string
   product?: Prisma.ProductCreateNestedOneWithoutMarketPlaceProductsInput
   links?: Prisma.LinkCreateNestedManyWithoutMarketPlaceProductInput
+  clickEvents?: Prisma.ClickEventCreateNestedManyWithoutMarketPlaceProductInput
 }
 
 export type MarketPlaceProductUncheckedCreateInput = {
@@ -339,6 +343,7 @@ export type MarketPlaceProductUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   links?: Prisma.LinkUncheckedCreateNestedManyWithoutMarketPlaceProductInput
+  clickEvents?: Prisma.ClickEventUncheckedCreateNestedManyWithoutMarketPlaceProductInput
 }
 
 export type MarketPlaceProductUpdateInput = {
@@ -352,6 +357,7 @@ export type MarketPlaceProductUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   product?: Prisma.ProductUpdateOneWithoutMarketPlaceProductsNestedInput
   links?: Prisma.LinkUpdateManyWithoutMarketPlaceProductNestedInput
+  clickEvents?: Prisma.ClickEventUpdateManyWithoutMarketPlaceProductNestedInput
 }
 
 export type MarketPlaceProductUncheckedUpdateInput = {
@@ -365,6 +371,7 @@ export type MarketPlaceProductUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   links?: Prisma.LinkUncheckedUpdateManyWithoutMarketPlaceProductNestedInput
+  clickEvents?: Prisma.ClickEventUncheckedUpdateManyWithoutMarketPlaceProductNestedInput
 }
 
 export type MarketPlaceProductCreateManyInput = {
@@ -527,6 +534,22 @@ export type MarketPlaceProductUpdateOneWithoutLinksNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MarketPlaceProductUpdateToOneWithWhereWithoutLinksInput, Prisma.MarketPlaceProductUpdateWithoutLinksInput>, Prisma.MarketPlaceProductUncheckedUpdateWithoutLinksInput>
 }
 
+export type MarketPlaceProductCreateNestedOneWithoutClickEventsInput = {
+  create?: Prisma.XOR<Prisma.MarketPlaceProductCreateWithoutClickEventsInput, Prisma.MarketPlaceProductUncheckedCreateWithoutClickEventsInput>
+  connectOrCreate?: Prisma.MarketPlaceProductCreateOrConnectWithoutClickEventsInput
+  connect?: Prisma.MarketPlaceProductWhereUniqueInput
+}
+
+export type MarketPlaceProductUpdateOneWithoutClickEventsNestedInput = {
+  create?: Prisma.XOR<Prisma.MarketPlaceProductCreateWithoutClickEventsInput, Prisma.MarketPlaceProductUncheckedCreateWithoutClickEventsInput>
+  connectOrCreate?: Prisma.MarketPlaceProductCreateOrConnectWithoutClickEventsInput
+  upsert?: Prisma.MarketPlaceProductUpsertWithoutClickEventsInput
+  disconnect?: Prisma.MarketPlaceProductWhereInput | boolean
+  delete?: Prisma.MarketPlaceProductWhereInput | boolean
+  connect?: Prisma.MarketPlaceProductWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MarketPlaceProductUpdateToOneWithWhereWithoutClickEventsInput, Prisma.MarketPlaceProductUpdateWithoutClickEventsInput>, Prisma.MarketPlaceProductUncheckedUpdateWithoutClickEventsInput>
+}
+
 export type MarketPlaceProductCreateWithoutProductInput = {
   id?: string
   title: string
@@ -537,6 +560,7 @@ export type MarketPlaceProductCreateWithoutProductInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   links?: Prisma.LinkCreateNestedManyWithoutMarketPlaceProductInput
+  clickEvents?: Prisma.ClickEventCreateNestedManyWithoutMarketPlaceProductInput
 }
 
 export type MarketPlaceProductUncheckedCreateWithoutProductInput = {
@@ -549,6 +573,7 @@ export type MarketPlaceProductUncheckedCreateWithoutProductInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   links?: Prisma.LinkUncheckedCreateNestedManyWithoutMarketPlaceProductInput
+  clickEvents?: Prisma.ClickEventUncheckedCreateNestedManyWithoutMarketPlaceProductInput
 }
 
 export type MarketPlaceProductCreateOrConnectWithoutProductInput = {
@@ -602,6 +627,7 @@ export type MarketPlaceProductCreateWithoutLinksInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   product?: Prisma.ProductCreateNestedOneWithoutMarketPlaceProductsInput
+  clickEvents?: Prisma.ClickEventCreateNestedManyWithoutMarketPlaceProductInput
 }
 
 export type MarketPlaceProductUncheckedCreateWithoutLinksInput = {
@@ -614,6 +640,7 @@ export type MarketPlaceProductUncheckedCreateWithoutLinksInput = {
   productId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  clickEvents?: Prisma.ClickEventUncheckedCreateNestedManyWithoutMarketPlaceProductInput
 }
 
 export type MarketPlaceProductCreateOrConnectWithoutLinksInput = {
@@ -642,6 +669,7 @@ export type MarketPlaceProductUpdateWithoutLinksInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   product?: Prisma.ProductUpdateOneWithoutMarketPlaceProductsNestedInput
+  clickEvents?: Prisma.ClickEventUpdateManyWithoutMarketPlaceProductNestedInput
 }
 
 export type MarketPlaceProductUncheckedUpdateWithoutLinksInput = {
@@ -654,6 +682,75 @@ export type MarketPlaceProductUncheckedUpdateWithoutLinksInput = {
   productId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  clickEvents?: Prisma.ClickEventUncheckedUpdateManyWithoutMarketPlaceProductNestedInput
+}
+
+export type MarketPlaceProductCreateWithoutClickEventsInput = {
+  id?: string
+  title: string
+  image_url: string
+  price: number
+  url: string
+  platform: $Enums.PlatformEnum
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  product?: Prisma.ProductCreateNestedOneWithoutMarketPlaceProductsInput
+  links?: Prisma.LinkCreateNestedManyWithoutMarketPlaceProductInput
+}
+
+export type MarketPlaceProductUncheckedCreateWithoutClickEventsInput = {
+  id?: string
+  title: string
+  image_url: string
+  price: number
+  url: string
+  platform: $Enums.PlatformEnum
+  productId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  links?: Prisma.LinkUncheckedCreateNestedManyWithoutMarketPlaceProductInput
+}
+
+export type MarketPlaceProductCreateOrConnectWithoutClickEventsInput = {
+  where: Prisma.MarketPlaceProductWhereUniqueInput
+  create: Prisma.XOR<Prisma.MarketPlaceProductCreateWithoutClickEventsInput, Prisma.MarketPlaceProductUncheckedCreateWithoutClickEventsInput>
+}
+
+export type MarketPlaceProductUpsertWithoutClickEventsInput = {
+  update: Prisma.XOR<Prisma.MarketPlaceProductUpdateWithoutClickEventsInput, Prisma.MarketPlaceProductUncheckedUpdateWithoutClickEventsInput>
+  create: Prisma.XOR<Prisma.MarketPlaceProductCreateWithoutClickEventsInput, Prisma.MarketPlaceProductUncheckedCreateWithoutClickEventsInput>
+  where?: Prisma.MarketPlaceProductWhereInput
+}
+
+export type MarketPlaceProductUpdateToOneWithWhereWithoutClickEventsInput = {
+  where?: Prisma.MarketPlaceProductWhereInput
+  data: Prisma.XOR<Prisma.MarketPlaceProductUpdateWithoutClickEventsInput, Prisma.MarketPlaceProductUncheckedUpdateWithoutClickEventsInput>
+}
+
+export type MarketPlaceProductUpdateWithoutClickEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  url?: Prisma.StringFieldUpdateOperationsInput | string
+  platform?: Prisma.EnumPlatformEnumFieldUpdateOperationsInput | $Enums.PlatformEnum
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  product?: Prisma.ProductUpdateOneWithoutMarketPlaceProductsNestedInput
+  links?: Prisma.LinkUpdateManyWithoutMarketPlaceProductNestedInput
+}
+
+export type MarketPlaceProductUncheckedUpdateWithoutClickEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  image_url?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  url?: Prisma.StringFieldUpdateOperationsInput | string
+  platform?: Prisma.EnumPlatformEnumFieldUpdateOperationsInput | $Enums.PlatformEnum
+  productId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  links?: Prisma.LinkUncheckedUpdateManyWithoutMarketPlaceProductNestedInput
 }
 
 export type MarketPlaceProductCreateManyProductInput = {
@@ -677,6 +774,7 @@ export type MarketPlaceProductUpdateWithoutProductInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   links?: Prisma.LinkUpdateManyWithoutMarketPlaceProductNestedInput
+  clickEvents?: Prisma.ClickEventUpdateManyWithoutMarketPlaceProductNestedInput
 }
 
 export type MarketPlaceProductUncheckedUpdateWithoutProductInput = {
@@ -689,6 +787,7 @@ export type MarketPlaceProductUncheckedUpdateWithoutProductInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   links?: Prisma.LinkUncheckedUpdateManyWithoutMarketPlaceProductNestedInput
+  clickEvents?: Prisma.ClickEventUncheckedUpdateManyWithoutMarketPlaceProductNestedInput
 }
 
 export type MarketPlaceProductUncheckedUpdateManyWithoutProductInput = {
@@ -709,10 +808,12 @@ export type MarketPlaceProductUncheckedUpdateManyWithoutProductInput = {
 
 export type MarketPlaceProductCountOutputType = {
   links: number
+  clickEvents: number
 }
 
 export type MarketPlaceProductCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   links?: boolean | MarketPlaceProductCountOutputTypeCountLinksArgs
+  clickEvents?: boolean | MarketPlaceProductCountOutputTypeCountClickEventsArgs
 }
 
 /**
@@ -732,6 +833,13 @@ export type MarketPlaceProductCountOutputTypeCountLinksArgs<ExtArgs extends runt
   where?: Prisma.LinkWhereInput
 }
 
+/**
+ * MarketPlaceProductCountOutputType without action
+ */
+export type MarketPlaceProductCountOutputTypeCountClickEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ClickEventWhereInput
+}
+
 
 export type MarketPlaceProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -745,6 +853,7 @@ export type MarketPlaceProductSelect<ExtArgs extends runtime.Types.Extensions.In
   updatedAt?: boolean
   product?: boolean | Prisma.MarketPlaceProduct$productArgs<ExtArgs>
   links?: boolean | Prisma.MarketPlaceProduct$linksArgs<ExtArgs>
+  clickEvents?: boolean | Prisma.MarketPlaceProduct$clickEventsArgs<ExtArgs>
   _count?: boolean | Prisma.MarketPlaceProductCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["marketPlaceProduct"]>
 
@@ -790,6 +899,7 @@ export type MarketPlaceProductOmit<ExtArgs extends runtime.Types.Extensions.Inte
 export type MarketPlaceProductInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   product?: boolean | Prisma.MarketPlaceProduct$productArgs<ExtArgs>
   links?: boolean | Prisma.MarketPlaceProduct$linksArgs<ExtArgs>
+  clickEvents?: boolean | Prisma.MarketPlaceProduct$clickEventsArgs<ExtArgs>
   _count?: boolean | Prisma.MarketPlaceProductCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type MarketPlaceProductIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -804,6 +914,7 @@ export type $MarketPlaceProductPayload<ExtArgs extends runtime.Types.Extensions.
   objects: {
     product: Prisma.$ProductPayload<ExtArgs> | null
     links: Prisma.$LinkPayload<ExtArgs>[]
+    clickEvents: Prisma.$ClickEventPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1211,6 +1322,7 @@ export interface Prisma__MarketPlaceProductClient<T, Null = never, ExtArgs exten
   readonly [Symbol.toStringTag]: "PrismaPromise"
   product<T extends Prisma.MarketPlaceProduct$productArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketPlaceProduct$productArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   links<T extends Prisma.MarketPlaceProduct$linksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketPlaceProduct$linksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  clickEvents<T extends Prisma.MarketPlaceProduct$clickEventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MarketPlaceProduct$clickEventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClickEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1685,6 +1797,30 @@ export type MarketPlaceProduct$linksArgs<ExtArgs extends runtime.Types.Extension
   take?: number
   skip?: number
   distinct?: Prisma.LinkScalarFieldEnum | Prisma.LinkScalarFieldEnum[]
+}
+
+/**
+ * MarketPlaceProduct.clickEvents
+ */
+export type MarketPlaceProduct$clickEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ClickEvent
+   */
+  select?: Prisma.ClickEventSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ClickEvent
+   */
+  omit?: Prisma.ClickEventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClickEventInclude<ExtArgs> | null
+  where?: Prisma.ClickEventWhereInput
+  orderBy?: Prisma.ClickEventOrderByWithRelationInput | Prisma.ClickEventOrderByWithRelationInput[]
+  cursor?: Prisma.ClickEventWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ClickEventScalarFieldEnum | Prisma.ClickEventScalarFieldEnum[]
 }
 
 /**

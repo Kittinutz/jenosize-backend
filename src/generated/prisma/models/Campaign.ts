@@ -216,6 +216,7 @@ export type CampaignWhereInput = {
   UTMCampaign?: Prisma.StringFilter<"Campaign"> | string
   campaignsProducts?: Prisma.CampaignsProductsListRelationFilter
   links?: Prisma.LinkListRelationFilter
+  clickEvents?: Prisma.ClickEventListRelationFilter
 }
 
 export type CampaignOrderByWithRelationInput = {
@@ -230,6 +231,7 @@ export type CampaignOrderByWithRelationInput = {
   UTMCampaign?: Prisma.SortOrder
   campaignsProducts?: Prisma.CampaignsProductsOrderByRelationAggregateInput
   links?: Prisma.LinkOrderByRelationAggregateInput
+  clickEvents?: Prisma.ClickEventOrderByRelationAggregateInput
 }
 
 export type CampaignWhereUniqueInput = Prisma.AtLeast<{
@@ -247,6 +249,7 @@ export type CampaignWhereUniqueInput = Prisma.AtLeast<{
   UTMCampaign?: Prisma.StringFilter<"Campaign"> | string
   campaignsProducts?: Prisma.CampaignsProductsListRelationFilter
   links?: Prisma.LinkListRelationFilter
+  clickEvents?: Prisma.ClickEventListRelationFilter
 }, "id">
 
 export type CampaignOrderByWithAggregationInput = {
@@ -291,6 +294,7 @@ export type CampaignCreateInput = {
   UTMCampaign: string
   campaignsProducts?: Prisma.CampaignsProductsCreateNestedManyWithoutCampaignInput
   links?: Prisma.LinkCreateNestedManyWithoutCampaignInput
+  clickEvents?: Prisma.ClickEventCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateInput = {
@@ -305,6 +309,7 @@ export type CampaignUncheckedCreateInput = {
   UTMCampaign: string
   campaignsProducts?: Prisma.CampaignsProductsUncheckedCreateNestedManyWithoutCampaignInput
   links?: Prisma.LinkUncheckedCreateNestedManyWithoutCampaignInput
+  clickEvents?: Prisma.ClickEventUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUpdateInput = {
@@ -319,6 +324,7 @@ export type CampaignUpdateInput = {
   UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
   campaignsProducts?: Prisma.CampaignsProductsUpdateManyWithoutCampaignNestedInput
   links?: Prisma.LinkUpdateManyWithoutCampaignNestedInput
+  clickEvents?: Prisma.ClickEventUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateInput = {
@@ -333,6 +339,7 @@ export type CampaignUncheckedUpdateInput = {
   UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
   campaignsProducts?: Prisma.CampaignsProductsUncheckedUpdateManyWithoutCampaignNestedInput
   links?: Prisma.LinkUncheckedUpdateManyWithoutCampaignNestedInput
+  clickEvents?: Prisma.ClickEventUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignCreateManyInput = {
@@ -412,6 +419,11 @@ export type CampaignScalarRelationFilter = {
   isNot?: Prisma.CampaignWhereInput
 }
 
+export type CampaignNullableScalarRelationFilter = {
+  is?: Prisma.CampaignWhereInput | null
+  isNot?: Prisma.CampaignWhereInput | null
+}
+
 export type CampaignCreateNestedOneWithoutCampaignsProductsInput = {
   create?: Prisma.XOR<Prisma.CampaignCreateWithoutCampaignsProductsInput, Prisma.CampaignUncheckedCreateWithoutCampaignsProductsInput>
   connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutCampaignsProductsInput
@@ -440,6 +452,22 @@ export type CampaignUpdateOneRequiredWithoutLinksNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CampaignUpdateToOneWithWhereWithoutLinksInput, Prisma.CampaignUpdateWithoutLinksInput>, Prisma.CampaignUncheckedUpdateWithoutLinksInput>
 }
 
+export type CampaignCreateNestedOneWithoutClickEventsInput = {
+  create?: Prisma.XOR<Prisma.CampaignCreateWithoutClickEventsInput, Prisma.CampaignUncheckedCreateWithoutClickEventsInput>
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutClickEventsInput
+  connect?: Prisma.CampaignWhereUniqueInput
+}
+
+export type CampaignUpdateOneWithoutClickEventsNestedInput = {
+  create?: Prisma.XOR<Prisma.CampaignCreateWithoutClickEventsInput, Prisma.CampaignUncheckedCreateWithoutClickEventsInput>
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutClickEventsInput
+  upsert?: Prisma.CampaignUpsertWithoutClickEventsInput
+  disconnect?: Prisma.CampaignWhereInput | boolean
+  delete?: Prisma.CampaignWhereInput | boolean
+  connect?: Prisma.CampaignWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CampaignUpdateToOneWithWhereWithoutClickEventsInput, Prisma.CampaignUpdateWithoutClickEventsInput>, Prisma.CampaignUncheckedUpdateWithoutClickEventsInput>
+}
+
 export type CampaignCreateWithoutCampaignsProductsInput = {
   id?: string
   name: string
@@ -451,6 +479,7 @@ export type CampaignCreateWithoutCampaignsProductsInput = {
   UTMMedium: string
   UTMCampaign: string
   links?: Prisma.LinkCreateNestedManyWithoutCampaignInput
+  clickEvents?: Prisma.ClickEventCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateWithoutCampaignsProductsInput = {
@@ -464,6 +493,7 @@ export type CampaignUncheckedCreateWithoutCampaignsProductsInput = {
   UTMMedium: string
   UTMCampaign: string
   links?: Prisma.LinkUncheckedCreateNestedManyWithoutCampaignInput
+  clickEvents?: Prisma.ClickEventUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignCreateOrConnectWithoutCampaignsProductsInput = {
@@ -493,6 +523,7 @@ export type CampaignUpdateWithoutCampaignsProductsInput = {
   UTMMedium?: Prisma.StringFieldUpdateOperationsInput | string
   UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
   links?: Prisma.LinkUpdateManyWithoutCampaignNestedInput
+  clickEvents?: Prisma.ClickEventUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateWithoutCampaignsProductsInput = {
@@ -506,6 +537,7 @@ export type CampaignUncheckedUpdateWithoutCampaignsProductsInput = {
   UTMMedium?: Prisma.StringFieldUpdateOperationsInput | string
   UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
   links?: Prisma.LinkUncheckedUpdateManyWithoutCampaignNestedInput
+  clickEvents?: Prisma.ClickEventUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignCreateWithoutLinksInput = {
@@ -519,6 +551,7 @@ export type CampaignCreateWithoutLinksInput = {
   UTMMedium: string
   UTMCampaign: string
   campaignsProducts?: Prisma.CampaignsProductsCreateNestedManyWithoutCampaignInput
+  clickEvents?: Prisma.ClickEventCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateWithoutLinksInput = {
@@ -532,6 +565,7 @@ export type CampaignUncheckedCreateWithoutLinksInput = {
   UTMMedium: string
   UTMCampaign: string
   campaignsProducts?: Prisma.CampaignsProductsUncheckedCreateNestedManyWithoutCampaignInput
+  clickEvents?: Prisma.ClickEventUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignCreateOrConnectWithoutLinksInput = {
@@ -561,6 +595,7 @@ export type CampaignUpdateWithoutLinksInput = {
   UTMMedium?: Prisma.StringFieldUpdateOperationsInput | string
   UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
   campaignsProducts?: Prisma.CampaignsProductsUpdateManyWithoutCampaignNestedInput
+  clickEvents?: Prisma.ClickEventUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateWithoutLinksInput = {
@@ -574,6 +609,79 @@ export type CampaignUncheckedUpdateWithoutLinksInput = {
   UTMMedium?: Prisma.StringFieldUpdateOperationsInput | string
   UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
   campaignsProducts?: Prisma.CampaignsProductsUncheckedUpdateManyWithoutCampaignNestedInput
+  clickEvents?: Prisma.ClickEventUncheckedUpdateManyWithoutCampaignNestedInput
+}
+
+export type CampaignCreateWithoutClickEventsInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  startDate: Date | string
+  endDate: Date | string
+  UTMSource: string
+  UTMMedium: string
+  UTMCampaign: string
+  campaignsProducts?: Prisma.CampaignsProductsCreateNestedManyWithoutCampaignInput
+  links?: Prisma.LinkCreateNestedManyWithoutCampaignInput
+}
+
+export type CampaignUncheckedCreateWithoutClickEventsInput = {
+  id?: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  startDate: Date | string
+  endDate: Date | string
+  UTMSource: string
+  UTMMedium: string
+  UTMCampaign: string
+  campaignsProducts?: Prisma.CampaignsProductsUncheckedCreateNestedManyWithoutCampaignInput
+  links?: Prisma.LinkUncheckedCreateNestedManyWithoutCampaignInput
+}
+
+export type CampaignCreateOrConnectWithoutClickEventsInput = {
+  where: Prisma.CampaignWhereUniqueInput
+  create: Prisma.XOR<Prisma.CampaignCreateWithoutClickEventsInput, Prisma.CampaignUncheckedCreateWithoutClickEventsInput>
+}
+
+export type CampaignUpsertWithoutClickEventsInput = {
+  update: Prisma.XOR<Prisma.CampaignUpdateWithoutClickEventsInput, Prisma.CampaignUncheckedUpdateWithoutClickEventsInput>
+  create: Prisma.XOR<Prisma.CampaignCreateWithoutClickEventsInput, Prisma.CampaignUncheckedCreateWithoutClickEventsInput>
+  where?: Prisma.CampaignWhereInput
+}
+
+export type CampaignUpdateToOneWithWhereWithoutClickEventsInput = {
+  where?: Prisma.CampaignWhereInput
+  data: Prisma.XOR<Prisma.CampaignUpdateWithoutClickEventsInput, Prisma.CampaignUncheckedUpdateWithoutClickEventsInput>
+}
+
+export type CampaignUpdateWithoutClickEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  UTMSource?: Prisma.StringFieldUpdateOperationsInput | string
+  UTMMedium?: Prisma.StringFieldUpdateOperationsInput | string
+  UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
+  campaignsProducts?: Prisma.CampaignsProductsUpdateManyWithoutCampaignNestedInput
+  links?: Prisma.LinkUpdateManyWithoutCampaignNestedInput
+}
+
+export type CampaignUncheckedUpdateWithoutClickEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  UTMSource?: Prisma.StringFieldUpdateOperationsInput | string
+  UTMMedium?: Prisma.StringFieldUpdateOperationsInput | string
+  UTMCampaign?: Prisma.StringFieldUpdateOperationsInput | string
+  campaignsProducts?: Prisma.CampaignsProductsUncheckedUpdateManyWithoutCampaignNestedInput
+  links?: Prisma.LinkUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 
@@ -584,11 +692,13 @@ export type CampaignUncheckedUpdateWithoutLinksInput = {
 export type CampaignCountOutputType = {
   campaignsProducts: number
   links: number
+  clickEvents: number
 }
 
 export type CampaignCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   campaignsProducts?: boolean | CampaignCountOutputTypeCountCampaignsProductsArgs
   links?: boolean | CampaignCountOutputTypeCountLinksArgs
+  clickEvents?: boolean | CampaignCountOutputTypeCountClickEventsArgs
 }
 
 /**
@@ -615,6 +725,13 @@ export type CampaignCountOutputTypeCountLinksArgs<ExtArgs extends runtime.Types.
   where?: Prisma.LinkWhereInput
 }
 
+/**
+ * CampaignCountOutputType without action
+ */
+export type CampaignCountOutputTypeCountClickEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ClickEventWhereInput
+}
+
 
 export type CampaignSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -628,6 +745,7 @@ export type CampaignSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   UTMCampaign?: boolean
   campaignsProducts?: boolean | Prisma.Campaign$campaignsProductsArgs<ExtArgs>
   links?: boolean | Prisma.Campaign$linksArgs<ExtArgs>
+  clickEvents?: boolean | Prisma.Campaign$clickEventsArgs<ExtArgs>
   _count?: boolean | Prisma.CampaignCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["campaign"]>
 
@@ -671,6 +789,7 @@ export type CampaignOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 export type CampaignInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   campaignsProducts?: boolean | Prisma.Campaign$campaignsProductsArgs<ExtArgs>
   links?: boolean | Prisma.Campaign$linksArgs<ExtArgs>
+  clickEvents?: boolean | Prisma.Campaign$clickEventsArgs<ExtArgs>
   _count?: boolean | Prisma.CampaignCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CampaignIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -681,6 +800,7 @@ export type $CampaignPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   objects: {
     campaignsProducts: Prisma.$CampaignsProductsPayload<ExtArgs>[]
     links: Prisma.$LinkPayload<ExtArgs>[]
+    clickEvents: Prisma.$ClickEventPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1088,6 +1208,7 @@ export interface Prisma__CampaignClient<T, Null = never, ExtArgs extends runtime
   readonly [Symbol.toStringTag]: "PrismaPromise"
   campaignsProducts<T extends Prisma.Campaign$campaignsProductsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$campaignsProductsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CampaignsProductsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   links<T extends Prisma.Campaign$linksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$linksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  clickEvents<T extends Prisma.Campaign$clickEventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$clickEventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClickEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1559,6 +1680,30 @@ export type Campaign$linksArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.LinkScalarFieldEnum | Prisma.LinkScalarFieldEnum[]
+}
+
+/**
+ * Campaign.clickEvents
+ */
+export type Campaign$clickEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ClickEvent
+   */
+  select?: Prisma.ClickEventSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ClickEvent
+   */
+  omit?: Prisma.ClickEventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClickEventInclude<ExtArgs> | null
+  where?: Prisma.ClickEventWhereInput
+  orderBy?: Prisma.ClickEventOrderByWithRelationInput | Prisma.ClickEventOrderByWithRelationInput[]
+  cursor?: Prisma.ClickEventWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ClickEventScalarFieldEnum | Prisma.ClickEventScalarFieldEnum[]
 }
 
 /**

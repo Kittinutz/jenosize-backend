@@ -62,3 +62,8 @@ export type CampaignsProducts = Prisma.CampaignsProductsModel
  * 
  */
 export type Link = Prisma.LinkModel
+/**
+ * Model ClickEvent
+ * 
+ */
+export type ClickEvent = Prisma.ClickEventModel
