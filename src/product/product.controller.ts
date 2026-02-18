@@ -133,6 +133,6 @@ export class ProductController {
     description: 'Product not found',
   })
   remove(@Param('id') id: string) {
-    return this.productService.remove(+id);
+    return this.productService.remove(id);
   }
 }
