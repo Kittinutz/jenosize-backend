@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   Query,
+  UseInterceptors,
   ValidationPipe,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiQuery } from '@nestjs/swagger';
@@ -12,9 +13,11 @@ import {
   SearchProductResponseDto,
 } from './search-product.dto';
 import { PlatformEnum } from '../enum/platformEnum';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @ApiTags('Search Product')
 @Controller('search-product')
+@UseInterceptors(CacheInterceptor)
 export class SearchProductController {
   constructor(private readonly searchProductService: SearchProductService) {}
 

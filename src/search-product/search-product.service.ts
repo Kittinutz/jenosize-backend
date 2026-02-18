@@ -287,30 +287,4 @@ export class SearchProductService {
     }
     throw new BadRequestException('Unsupported platform');
   }
-
-  extractProductId(url: string, platform: PlatformEnum): string {
-    try {
-      if (platform === PlatformEnum.LAZADA) {
-        // Lazada URL pattern: https://www.lazada.co.th/products/product-name-i123456789.html
-        const match = url.match(/-i(\d+)\.html/);
-        if (match && match[1]) {
-          return match[1];
-        }
-      } else if (platform === PlatformEnum.SHOPEE) {
-        // Shopee URL pattern: https://shopee.co.th/product-name-i.123.456789
-        const match = url.match(/\.i\.(\d+)\.(\d+)/);
-        if (match && match[2]) {
-          return match[2];
-        }
-        // Alternative pattern: https://shopee.co.th/product-i.123456789
-        const altMatch = url.match(/\.i\.(\d+)/);
-        if (altMatch && altMatch[1]) {
-          return altMatch[1];
-        }
-      }
-      return 'unknown';
-    } catch {
-      return 'unknown';
-    }
-  }
 }
