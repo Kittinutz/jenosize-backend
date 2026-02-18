@@ -9,6 +9,7 @@ import { CampaignModule } from './campaign/campaign.module';
 import { GoModule } from './go/go.module';
 import { BullModule } from '@nestjs/bullmq';
 import { ClickEventsModule } from './click-events/click-events.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -41,6 +42,7 @@ import { ClickEventsModule } from './click-events/click-events.module';
     CampaignModule,
     GoModule,
     ClickEventsModule,
+    DashboardModule,
   ],
   controllers: [AppController],
   providers: [AppService],
