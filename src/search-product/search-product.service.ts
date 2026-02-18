@@ -3,11 +3,10 @@ import { SearchProductResponseDto } from './search-product.dto';
 import puppeteer from 'puppeteer';
 // import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 // puppeteer.use(StealthPlugin());
-import { Browser, Page, Protocol } from 'puppeteer';
+import { Browser, Page } from 'puppeteer';
 import fs from 'fs';
 import userAgent from 'user-agents';
 import { PlatformEnum } from '../enum/platformEnum';
-import { platform } from 'os';
 interface StorageInterface {
   setItem(key: string, value: string): Promise<void>;
 }
@@ -143,7 +142,7 @@ export class SearchProductService {
     }).toString();
     try {
       browser = await puppeteer.launch({
-        headless: false, // Use 'false' if you want to see the browser
+        headless: true, // Use 'false' if you want to see the browser
         args: [
           '--no-sandbox',
           '--incognito',
