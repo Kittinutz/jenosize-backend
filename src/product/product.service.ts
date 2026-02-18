@@ -39,14 +39,40 @@ export class ProductService {
   }
 
   async findOne(id: number | string): Promise<Product | null> {
-    return await this.prisma.product.findUnique({
+    const product = await this.prisma.product.findUnique({
       where: { id: String(id) },
       include: {
-        marketPlaceProducts: true,
+        marketPlaceProducts: {
+          include: {
+            links: true,
+          },
+        },
       },
     });
-  }
 
+    return product;
+  }
+  async findOneWithLinkCampaign(
+    id: string,
+    campaignId: string,
+  ): Promise<Product | null> {
+    const productWithLinkCampaign = await this.prisma.product.findUnique({
+      where: { id: String(id) },
+      include: {
+        marketPlaceProducts: {
+          include: {
+            links: {
+              where: {
+                campaignId: String(campaignId),
+              },
+            },
+          },
+        },
+      },
+    });
+
+    return productWithLinkCampaign;
+  }
   async update(id: number | string, updateProductDto: UpdateProductDto) {
     return await this.prisma.product.update({
       where: { id: String(id) },

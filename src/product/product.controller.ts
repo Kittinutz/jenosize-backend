@@ -77,7 +77,15 @@ export class ProductController {
     description: 'Product not found',
   })
   async findOne(@Param('id') id: string): Promise<Product | null> {
-    return this.productService.findOne(+id);
+    return this.productService.findOne(id);
+  }
+
+  @Get(':id/campaign/:campaignId')
+  async finOneWithCampaigns(
+    @Param('id') id: string,
+    @Param('campaignId') campaignId: string,
+  ): Promise<Product | null> {
+    return this.productService.findOneWithLinkCampaign(id, campaignId);
   }
 
   @Patch(':id')
