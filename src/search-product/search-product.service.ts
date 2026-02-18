@@ -19,6 +19,7 @@ export class SearchProductService {
       args: [
         '--no-sandbox',
         '--incognito',
+        '--disable-gpu',
         '--disable-setuid-sandbox',
         '--window-size=1920,1080',
         '--user-agent=' + userAgentString.toString() + '',
@@ -144,6 +145,7 @@ export class SearchProductService {
           '--no-sandbox',
           '--incognito',
           '--disable-setuid-sandbox',
+          '--disable-gpu',
           '--window-size=1920,1080',
           '--user-agent=' + userAgentString.toString() + '',
         ],
