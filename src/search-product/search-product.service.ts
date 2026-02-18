@@ -4,12 +4,9 @@ import puppeteer from 'puppeteer';
 // import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 // puppeteer.use(StealthPlugin());
 import { Browser, Page } from 'puppeteer';
-import fs from 'fs';
 import userAgent from 'user-agents';
 import { PlatformEnum } from '../enum/platformEnum';
-interface StorageInterface {
-  setItem(key: string, value: string): Promise<void>;
-}
+
 @Injectable()
 export class SearchProductService {
   async searchProductLazada(url: string): Promise<SearchProductResponseDto> {
@@ -177,47 +174,12 @@ export class SearchProductService {
         'sec-fetch-user': '?1',
         'upgrade-insecure-requests': '1',
       });
-      const cookies = fs.readFileSync(
-        './credentials/shopee-cookies.json',
-        'utf-8',
-      );
-      const sessionStorage = JSON.parse(
-        fs.readFileSync('./credentials/shopee-session-storage.json', 'utf-8'),
-      );
-      const localStorage = JSON.parse(
-        fs.readFileSync('./credentials/shopee-local-storage.json', 'utf-8'),
-      );
 
       // Navigate to the product page
       await page.goto('https://shopee.co.th', {
         waitUntil: 'networkidle2',
         timeout: 60000,
       });
-      const cookiesArray = JSON.parse(cookies);
-      await page.setCookie(...cookiesArray);
-      await page.evaluate(
-        async ({
-          sessionStorage: sessionStorageData,
-          localStorage: localStorageData,
-        }) => {
-          for (const key in sessionStorageData as StorageInterface) {
-            await (sessionStorage as StorageInterface).setItem(
-              key,
-              sessionStorageData[key] as string,
-            );
-          }
-          for (const key in localStorageData as StorageInterface) {
-            await (localStorage as StorageInterface).setItem(
-              key,
-              localStorageData[key] as string,
-            );
-          }
-        },
-        {
-          sessionStorage,
-          localStorage,
-        },
-      );
 
       await page.goto(url, {
         waitUntil: 'networkidle2',
