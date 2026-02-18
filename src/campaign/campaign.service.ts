@@ -85,7 +85,11 @@ export class CampaignService {
           include: {
             product: {
               include: {
-                marketPlaceProducts: true,
+                marketPlaceProducts: {
+                  include: {
+                    links: true,
+                  },
+                },
               },
             },
           },
@@ -102,7 +106,11 @@ export class CampaignService {
           include: {
             product: {
               include: {
-                marketPlaceProducts: true,
+                marketPlaceProducts: {
+                  include: {
+                    links: true,
+                  },
+                },
               },
             },
           },
