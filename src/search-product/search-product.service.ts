@@ -1,18 +1,23 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { SearchProductResponseDto } from './search-product.dto';
-import puppeteer from 'puppeteer-extra';
-import StealthPlugin from 'puppeteer-extra-plugin-stealth';
-puppeteer.use(StealthPlugin());
+import puppeteer from 'puppeteer';
+// import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+// puppeteer.use(StealthPlugin());
 import { Browser, Page, Protocol } from 'puppeteer';
 import fs from 'fs';
 import userAgent from 'user-agents';
 import { PlatformEnum } from '../enum/platformEnum';
+import { platform } from 'os';
 interface StorageInterface {
   setItem(key: string, value: string): Promise<void>;
 }
 @Injectable()
 export class SearchProductService {
   async searchProductLazada(url: string): Promise<SearchProductResponseDto> {
+    const userAgentString = new userAgent({
+      deviceCategory: 'desktop',
+      platform: 'Linux x86_64',
+    }).toString();
     const browser = await puppeteer.launch({
       headless: true, // Use 'false' if you want to see the browser
       args: [
@@ -20,17 +25,14 @@ export class SearchProductService {
         '--incognito',
         '--disable-setuid-sandbox',
         '--window-size=1920,1080',
+        '--user-agent=' + userAgentString.toString() + '',
       ],
+      defaultViewport: null,
     });
 
     try {
       const page = await browser.newPage();
-
-      const userAgentString = new userAgent().toString();
-      await page.setUserAgent(
-        userAgentString as string,
-        userAgent.data as Protocol.Emulation.UserAgentMetadata,
-      );
+      await page.setViewport({ width: 1920, height: 1080 });
 
       await page.goto(url, {
         waitUntil: 'networkidle2',
@@ -135,29 +137,26 @@ export class SearchProductService {
   async searchProductShopee(url: string): Promise<SearchProductResponseDto> {
     let browser: Browser | null = null;
     let page: Page | null = null;
-
+    const userAgentString = new userAgent({
+      deviceCategory: 'desktop',
+      platform: 'Linux x86_64',
+    }).toString();
     try {
       browser = await puppeteer.launch({
-        headless: true, // Use 'false' if you want to see the browser
+        headless: false, // Use 'false' if you want to see the browser
         args: [
           '--no-sandbox',
           '--incognito',
           '--disable-setuid-sandbox',
           '--window-size=1920,1080',
-          //   '--disable-web-security',
+          '--user-agent=' + userAgentString.toString() + '',
         ],
-        defaultViewport: {
-          width: 1920,
-          height: 1080,
-        },
+        defaultViewport: null,
       });
 
       page = await browser.newPage();
-      const userAgentString = new userAgent().toString() as string;
-      await page.setUserAgent(
-        userAgentString,
-        userAgent.data as Protocol.Emulation.UserAgentMetadata,
-      );
+
+      await page.setViewport({ width: 1920, height: 1080 });
 
       await page.setExtraHTTPHeaders({
         accept:

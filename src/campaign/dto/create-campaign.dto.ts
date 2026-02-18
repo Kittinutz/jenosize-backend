@@ -2,32 +2,46 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsArray, IsDateString, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateCampaignDto {
-  @ApiProperty({ example: 'Q1 Promo' })
+  @ApiProperty({ example: 'Q1 Promo', required: true })
   @IsString()
   @IsNotEmpty()
   name: string;
 
-  @ApiProperty({ example: 'google' })
+  @ApiProperty({ example: 'google', required: true })
   @IsString()
   @IsNotEmpty()
   UTMSource: string;
 
-  @ApiProperty({ example: 'cpc' })
+  @ApiProperty({ example: 'cpc', required: true })
   @IsString()
   @IsNotEmpty()
   UTMMedium: string;
 
-  @ApiProperty({ example: ['prod_123', 'prod_456'], type: [String] })
+  @ApiProperty({
+    example: ['prod_123', 'prod_456'],
+    type: [String],
+    required: true,
+  })
   @IsArray()
   @IsString({ each: true })
   @IsNotEmpty()
   productIds: string[];
 
-  @ApiProperty({ example: '2026-02-16T00:00:00.000Z', format: 'date-time' })
+  @ApiProperty({
+    example: '2026-02-16T00:00:00.000Z',
+    format: 'date-time',
+    required: true,
+  })
   @IsDateString()
+  @IsNotEmpty()
   startDate: Date;
 
-  @ApiProperty({ example: '2026-03-01T00:00:00.000Z', format: 'date-time' })
+  @ApiProperty({
+    example: '2026-03-01T00:00:00.000Z',
+    format: 'date-time',
+    required: true,
+  })
   @IsDateString()
+  @IsNotEmpty()
   endDate: Date;
 }

@@ -16,6 +16,9 @@ export class CampaignService {
   async create(createCampaignDto: CreateCampaignDto) {
     const baseUrl =
       this.configService.get<string>('BASE_URL') || 'http://localhost:3000';
+    if (createCampaignDto.productIds.length === 0) {
+      throw new Error('ProductIds cannot be empty');
+    }
     return await this.prisma.$transaction(async (tx) => {
       const campaignCreated = await tx.campaign.create({
         data: {
@@ -135,6 +138,21 @@ export class CampaignService {
   remove(id: number | string) {
     return this.prisma.campaign.delete({
       where: { id: String(id) },
+      include: {
+        campaignsProducts: {
+          include: {
+            product: {
+              include: {
+                marketPlaceProducts: {
+                  include: {
+                    links: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     });
   }
 }

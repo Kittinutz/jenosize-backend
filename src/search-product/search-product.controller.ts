@@ -13,11 +13,12 @@ import {
   SearchProductResponseDto,
 } from './search-product.dto';
 import { PlatformEnum } from '../enum/platformEnum';
-import { CacheInterceptor } from '@nestjs/cache-manager';
+import { CacheInterceptor, CacheTTL } from '@nestjs/cache-manager';
 
 @ApiTags('Search Product')
 @Controller('search-product')
 @UseInterceptors(CacheInterceptor)
+@CacheTTL(2592000) // Cache for 30 days
 export class SearchProductController {
   constructor(private readonly searchProductService: SearchProductService) {}
 
@@ -51,7 +52,6 @@ export class SearchProductController {
     if (!platform) {
       throw new BadRequestException('Unsupported platform');
     }
-    console.log(`Detected platform: ${platform}`);
     const mappingexecuttion: {
       [key in PlatformEnum]: () => Promise<SearchProductResponseDto>;
     } = {

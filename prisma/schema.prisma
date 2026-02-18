@@ -33,7 +33,7 @@ model MarketPlaceProduct {
   url         String
   platform    PlatformEnum
   productId  String?
-  product Product? @relation(fields: [productId], references: [id])
+  product Product? @relation(fields: [productId], references: [id],onDelete: Cascade)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   links Link[]
@@ -65,8 +65,8 @@ model CampaignsProducts {
   productId   String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  campaign Campaign @relation(fields: [campaignId], references: [id])
-  product Product @relation(fields: [productId], references: [id])
+  campaign Campaign @relation(fields: [campaignId], references: [id],onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id],onDelete: Cascade)
 
 }
 model Link {
@@ -77,6 +77,6 @@ model Link {
   updatedAt   DateTime @updatedAt
   campaignId String
   marketPlaceProductId String
-  campaign Campaign @relation(fields: [campaignId], references: [id])
-  marketPlaceProduct MarketPlaceProduct? @relation(fields: [marketPlaceProductId], references: [id])
+  campaign Campaign @relation(fields: [campaignId], references: [id],onDelete: Cascade)
+  marketPlaceProduct MarketPlaceProduct? @relation(fields: [marketPlaceProductId], references: [id],onDelete: Cascade)
 }
